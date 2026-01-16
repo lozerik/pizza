@@ -1,3 +1,24 @@
+/*Fuentes*/
+@font-face {
+  font-family: 'rice';
+  src: url('fuentes/RiceBall.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'title';
+  src: url('fuentes/HangedLetters.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'seagram';
+  src: url('fuentes/Seagram.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'sevesbrg';
+  src: url('fuentes/sevesbrg.ttf') format('truetype');
+}
+
 /* RESET Y BASE */
 body {
     margin: 0;
@@ -22,6 +43,7 @@ body {
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     color: white;
+    font-family: 'title';
 }
 
 .top-nav a {
@@ -30,6 +52,7 @@ body {
     text-transform: uppercase;
     margin: 0 15px;
     font-size: 0.9rem;
+    font-family: 'seagram';
 }
 
 /* BANNER ESTILO IMAGEN CARGADA  ESTO ES LA MAGIA DE CSS QUE NOS VA A DAR MAZO ESTETICA (PRINCIPALMENTE PORQUE YA CON ESTO TENEMOS MEJOR APARTADO VISUAL QUE 
@@ -55,6 +78,8 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     font-size: 4.5rem;
     margin: 0;
     text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
+    font-family: 'sevesbrg';
+
 }
 
 .hero-subtitle {
@@ -120,6 +145,7 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     padding: 10px 30px;
     border-radius: 50px;
     text-transform: uppercase;
+    font-family: 'rice';
 }
 
 .classic { background-color: #1b7a06;
