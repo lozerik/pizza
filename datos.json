@@ -1,0 +1,156 @@
+{
+  "promociones": {
+    "deluxe": [
+      {
+        "nombre": "Menú Pizza Samuel's Deluxe",
+        "ingredientes": "Mozzarella, jamón, barbacoa, cebolla caramelizada, borde de queso",
+        "precio": 15.99,
+        "imagen": "Imagenes/Menús/imgMenu1"
+      },
+      {
+        "nombre": "Menú Pizza Suprema",
+        "ingredientes": "Pepperoni, carne picada, pimiento verde, cebolla roja",
+        "precio": 14.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú Trufada Gold",
+        "ingredientes": "Crema de trufa, champiñones, parmesano, aceite de oliva",
+        "precio": 16.99,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú Campiña",
+        "ingredientes": "Doble mozzarella, piña, jamón",
+        "precio": 11.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú Aros Negros",
+        "ingredientes": "Doble mozzarella, aceitunas, champiñones",
+        "precio": 11.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      }
+    ],
+    "clasicas": [
+      {
+        "nombre": "Menú Pizza Ramon's Classic",
+        "ingredientes": "Cheddar, Vacuno, Pepperoni, Maíz",
+        "precio": 12.99,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú Margarita Familiar",
+        "ingredientes": "Doble mozzarella, albahaca fresca, salsa de tomate premium",
+        "precio": 11.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú Pepperoni",
+        "ingredientes": "Pepperoni, chorizo, crema fresca",
+        "precio": 11.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      },
+      {
+        "nombre": "Menú 4 quesos",
+        "ingredientes": "Doble mozzarella, cheddar, queso azul, parmesano",
+        "precio": 11.50,
+        "imagen": "Imagenes/Menús/imgMenu2"
+      }
+    ]
+  },
+  "pizzas": {
+    "deluxe": [
+      {
+        "nombre": "Pizza Samuel's Deluxe",
+        "ingredientes": "Mozzarella, jamón, barbacoa, cebolla caramelizada, borde de queso",
+        "precio": 10.99,
+        "imagen": "Imagenes/Pizzas/imgMenu2"
+      },
+      {
+        "nombre": "Pizza Suprema",
+        "ingredientes": "Pepperoni, carne picada, pimiento verde, cebolla roja",
+        "precio": 9.50,
+        "imagen": "Imagenes/Pizzas/imgMenu2"
+      },
+      {
+        "nombre": "Trufada Gold",
+        "ingredientes": "Crema de trufa, champiñones, parmesano, aceite de oliva",
+        "precio": 8.99,
+        "imagen": "Imagenes/Pizzas/imgMenu2"
+      }
+    ],
+    "clasicas": [
+      {
+        "nombre": "Pizza Ramon's Classic",
+        "ingredientes": "Cheddar, Vacuno, Pepperoni, Maíz",
+        "precio": 8.99,
+        "imagen": "Imagenes/Pizzas/imgMenu2"
+      },
+      {
+        "nombre": "Margarita Familiar",
+        "ingredientes": "Doble mozzarella, albahaca fresca, salsa de tomate premium",
+        "precio": 8.50,
+        "imagen": "Imagenes/Pizzas/imgMenu2"
+      }
+    ]
+  },
+  "bebidas": {
+    "refrescos": [
+      { "nombre": "Coca-Cola", "cantidad": "330ml", "precio": 2.00,
+        "imagen": "Imagenes/Bebidas/imgMenu2" },
+      { "nombre": "Nestea", "cantidad": "330ml", "precio": 2.00,
+        "imagen": "Imagenes/Pizzas/imgMenu2" },
+      { "nombre": "Fanta Naranja", "cantidad": "330ml", "precio": 2.00,
+        "imagen": "Imagenes/Pizzas/imgMenu2" },
+      { "nombre": "Agua", "cantidad": "330ml", "precio": 1.50,
+        "imagen": "Imagenes/Pizzas/imgMenu2" }
+    ],
+    "infusiones": [
+      { "nombre": "Té Verde", "cantidad": "250ml", "precio": 1.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Té Matcha", "cantidad": "250ml", "precio": 2.00,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Té Rojo", "cantidad": "250ml", "precio": 1.20,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Manzanilla", "cantidad": "250ml", "precio": 1.80,
+        "imagen": "Imagenes/Menús/imgMenu2" }
+    ]
+  },
+  "postres": {
+    "batidos": [
+      { "nombre": "OreoShake", "descripcion": "Leche, sirope y oreos", "precio": 3.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "KinderShake", "descripcion": "Leche, Crema de cacahuete y Kinder", "precio": 3.80,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "KitkatShake", "descripcion": "Leche, sirope y kitkat", "precio": 4.00,
+        "imagen": "Imagenes/Menús/imgMenu2" }
+    ],
+    "dulces": [
+      { "nombre": "Tiramisu", "descripcion": "Bizcocho de café", "precio": 3.00,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Tarta de queso", "descripcion": "Puede ser de pitachos o de lotus", "precio": 4.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Helado", "descripcion": "Fresa, chocolate, menta y limón", "precio": 5.00,
+        "imagen": "Imagenes/Menús/imgMenu2" }
+    ]
+  },
+  "entrantes": {
+    "fritos": [
+      { "nombre": "Nuggets de Pollo", "unidades": 5, "precio": 2.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Alitas de pollo", "unidades": 5, "precio": 3.00,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Patatas fritas", "unidades": "ración", "precio": 2.00,
+        "imagen": "Imagenes/Menús/imgMenu2" }
+    ],
+    "tapas": [
+      { "nombre": "Gildas Clásicas", "unidades": 5, "precio": 2.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Aceitunas Rellenas", "unidades": "Cuenco", "precio": 1.50,
+        "imagen": "Imagenes/Menús/imgMenu2" },
+      { "nombre": "Tapas de salmón", "unidades": 2, "precio": 2.00,
+        "imagen": "Imagenes/Menús/imgMenu2" }
+    ]
+  }
+}
