@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Sur - Premium Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <span>
+                <a href="pizza.html" class="logo-text">Pizzeria SMR</a>
+            </span>
+            <div class="pizza-icon"></div>
+        </div>
+        <nav class="top-nav">
+            <a href="pizza.html" class="active">Menú</a>
+            <span class="separator">|</span>
+            <a href="reserva.html">Reserva</a>
+            <span class="separator">|</span>
+            <a href="contacto.html">Contacto</a>
+            <span class="separator">|</span>
+            <a href="ayuda.html" class="reserva-btn">Ayuda</a>
+        </nav>
+    </header>
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1 class="hero-title">FEEL THE PIZZA VIBES</h1>
+            <p class="hero-subtitle">YEAH</p>
+            <a href="reserva.html" class="reserva-btn-main">¡RÉSERVÁLO YA!</a>
+        </div>
+    </section>
+
+    <nav class="category-bar" id="reserva">
+        <button class="cat-btn">Inicio</button>
+        <button class="cat-btn">Promociones</button>
+        <button class="cat-btn">Pizzas</button>
+        <button class="cat-btn">Entrantes</button>
+        <button class="cat-btn">Bebidas</button>
+        <button class="cat-btn">Postres</button>
+        <div class="search-container">
+            <input type="text" placeholder="Buscar...">
+            <button>🔍</button>
+        </div>
+    </nav>
+
+    <main class="menu-container">
+        <section class="menu-section classic">
+            <h2 class="section-title">Menús Pizzas Classic</h2>
+            <div class="card-wrapper">
+                <button class="arrow">⬅</button>
+                <div class="pizza-card">
+                    <div class="card-header">Menú Pizza Samuel's</div>
+                    <div class="card-body">
+                        <div class="info-box red-box">
+                            <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
+                            <p class="price">Precio: 13,99 $</p>
+                        </div>
+                        <div class="pizza-image">
+                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ocu.org%2F-%2Fmedia%2Focu%2Fimages%2Fhome%2Falimentacion%2Falimentos%2Fpizzas_selector_1600x900.jpg" alt="Pizza Samuel">
+                        </div>
+                    </div>
+                </div>
+                <button class="arrow">➡</button>
+            </div>
+        </section>
+
+        <section class="menu-section deluxe">
+            <h2 class="section-title">Menús Pizzas Deluxe</h2>
+            <div class="card-wrapper">
+                <button class="arrow">⬅</button>
+                <div class="pizza-card">
+                    <div class="card-header">Menú Pizza Ramon's</div>
+                    <div class="card-body">
+                        <div class="info-box white-box">
+                            <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
+                            <p class="vegan-tag">Vegano</p>
+                            <p class="price">Precio: 12,99 $</p>
+                        </div>
+                        <div class="pizza-image">
+                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.joinnus.com%2Fwp-content%2Fuploads%2F2023%2F02%2F09154055%2Fpizzas-raras.jpg" alt="Pizza Ramon">
+                        </div>
+                    </div>
+                </div>
+                <button class="arrow">➡</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

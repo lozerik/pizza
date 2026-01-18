@@ -1,0 +1,25 @@
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.div-ayuda {
+    display: flex;
+    margin: 10px;
+}
+
+.nav-div{
+    margin: auto 10px;
+    align-items: center;
+    width: 100%;
+    background-color: #1eb120;
+    padding: 25px;
+}
+
+#reserva {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
