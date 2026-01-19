@@ -31,12 +31,12 @@
     </section>
 
     <nav class="category-bar">
-        <button class="cat-btn">𝕴𝖓𝖎𝖈𝖎𝖔</button>
-        <button class="cat-btn">𝔓𝖗𝖔𝖒𝖔𝖈𝖎𝖔𝖓𝖊𝖘</button>
-        <button class="cat-btn">𝕻𝖎𝖟𝖟𝖆𝖘</button>
-        <button class="cat-btn">𝔈𝖓𝖙𝖗𝖆𝖓𝖙𝖊𝖘</button>
-        <button class="cat-btn">𝔅𝖊𝖇𝖎𝖉𝖆𝖘</button>
-        <button class="cat-btn">𝔓𝖔𝖘𝖙𝖗𝖊𝖘</button>
+        <button class="cat-btn" onclick="filtrar('Inicio')">𝕴𝖓𝖎𝖈𝖎𝖔</button>
+        <button class="cat-btn" onclick="filtrar('promociones')">𝔓𝖗𝖔𝖒𝖔𝖈𝖎𝖔𝖓𝖊𝖘</button>
+        <button class="cat-btn" onclick="filtrar('pizzas')">𝕻𝖎𝖟𝖟𝖆𝖘</button>
+        <button class="cat-btn" onclick="filtrar('entrantes')">𝔈𝖓𝖙𝖗𝖆𝖓𝖙𝖊𝖘</button>
+        <button class="cat-btn" onclick="filtrar('bebidas')">𝔅𝖊𝖇𝖎𝖉𝖆𝖘</button>
+        <button class="cat-btn" onclick="filtrar('postres')">𝔓𝖔𝖘𝖙𝖗𝖊𝖘</button>
         <div class="search-container">
             <input type="text" placeholder="Buscar...">
             <button>🔍</button>
@@ -44,33 +44,170 @@
     </nav>
 
     <main class="menu-container">
-        <section class="menu-section classic">
-            <h2 class="section-title">Menús Pizzas Classic</h2>
-                <button >⬅</button>
-                        Menú Pizza Samuel's
-                            <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
-                            <p class="price">Precio: 13,99 $</p>
-                        <div class="pizza-image">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ocu.org%2F-%2Fmedia%2Focu%2Fimages%2Fhome%2Falimentacion%2Falimentos%2Fpizzas_selector_1600x900.jpg" alt="Pizza Samuel">
-                        </div>
-                <button>➡</button>
+        
+        <section id="Inicio" class="menu-section">
+            <h2 class="hero-title">Bienvenidos a Pizzeria Sur</h2>
+            <p style="color: white; text-align: center;">Selecciona una categoría para ver nuestras delicias.</p>
+        <section>
+            <h2 class="hero-title" style="text-align: center;">Conocenos</h2>
+            <h3 class="hero-subtitle"style="text-align: center;">Velocidad y satisfaccion para llevar Italia a tu casa </h3>
+            <p style="color: white; text-align: center;">Somos una empresa principalmente centrada en la eficiencia de nuestros envios hasta el punto de que somos la primera empresa centrada unicamente en el delivery y en las reservas para ello Usamos un sistema en el que reservas een cualquier momento del dia y recibiras nuestra pizza en  minutos recien cocinada </p>
         </section>
 
-        <section class="menu-section deluxe">
-            <h2 class="section-title">Menús Pizzas Deluxe</h2>
-                <button>⬅</button>
-                    Menú Pizza Ramon's
-                            <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
-                            <p class="vegan-tag">Vegano</p>
-                            <p class="price">Precio: 12,99 $</p>
-                        <div class="pizza-image">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.joinnus.com%2Fwp-content%2Fuploads%2F2023%2F02%2F09154055%2Fpizzas-raras.jpg" alt="Pizza Ramon">
-                      
-                 
+        </section>
+
+        <section id="promociones" class="menu-section">
+            <h2 class="section-title">Menús Pizzas Classic</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Menú Pizza Samuel's</h3>
+                    <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
+                    <p class="price">Precio: 13,99 $</p>
+                    <div class="pizza-image">
+                        <img src="Imagenes/Menús/imgMenu1.webp" alt="Menú Pizza Samuel" onerror="this.src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ocu.org%2F-%2Fmedia%2Focu%2Fimages%2Fhome%2Falimentacion%2Falimentos%2Fpizzas_selector_1600x900.jpg'">
+                    </div>
                 </div>
-                <button>➡</button>
+                <button class="flecha-nav">➡</button>
+            </div>
+
+            <h2 class="section-title">Menús Pizzas Deluxe</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Menú Pizza Ramon's</h3>
+                    <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
+                    <p class="vegan-tag">Vegano</p>
+                    <p class="price">Precio: 12,99 $</p>
+                    <div class="pizza-image">
+                        <img src="Imagenes/Menús/imgMenu8.webp" alt="Menú Pizza Ramon" onerror="this.src='https://cdn.joinnus.com%2Fwp-content%2Fuploads%2F2023%2F02%2F09154055%2Fpizzas-raras.jpg'">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
             </div>
         </section>
+
+        <section id="pizzas" class="menu-section">
+            <h2 class="section-title">Pizzas Classic</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Pizza Samuel's</h3>
+                    <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
+                    <p class="price">Precio: 9,5 $</p>
+                    <div class="pizza-image">
+                        <img src="Imagenes/Pizzas/imgPizza1.webp" alt="Pizza Samuel">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+
+            <h2 class="section-title">Pizzas Deluxe</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Pizza Ramon's</h3>
+                    <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
+                    <p class="vegan-tag">Vegano</p>
+                    <p class="price">Precio: 8,5 $</p>
+                    <div class="pizza-image">
+                        <img src="Imagenes/Pizzas/imgPizza7.webp" alt="Pizza Ramon">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+        </section>
+
+        <section id="entrantes" class="menu-section">
+            <h2 class="section-title">Fritos</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Nuggets</h3>
+                    <p><strong>Cantidad:</strong> 5 unidades. Nuggets de pollo fritos</p>
+                    <p class="price">Precio: 2,5 $</p>
+                    <div class="entrante-image">
+                        <img src="Imagenes/Entrantes/imgEntrante1.webp" alt="Nuggets">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+
+            <h2 class="section-title">Tapas</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Gildas</h3>
+                    <p><strong>Cantidad:</strong> 5 unidades. Gildas con boquerones en vinagre</p>
+                    <p class="price">Precio: 2,5 $</p>
+                    <div class="entrante-image">
+                        <img src="Imagenes/Entrantes/imgEntrante4.webp" alt="Gildas">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+        </section>
+
+        <section id="bebidas" class="menu-section">
+            <h2 class="section-title">Refrescos</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Coca Cola</h3>
+                    <p><strong>Cantidad:</strong> 330ml. Original, Zero, Zero Zero</p>
+                    <p class="price">Precio: 2 $</p>
+                    <div class="bebida-image">
+                        <img src="Imagenes/Bebidas/imgBebida1.webp" alt="CocaCola">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+
+            <h2 class="section-title">Infusiones</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Té Verde</h3>
+                    <p><strong>Cantidad:</strong> 250ml. Té verde con un toque de menta</p>
+                    <p class="price">Precio: 1,5 $</p>
+                    <div class="bebida-image">
+                        <img src="Imagenes/Bebidas/imgBebida5.webp" alt="TeVerde">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+        </section>
+
+        <section id="postres" class="menu-section">
+            <h2 class="section-title">Batidos</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>OreoShake</h3>
+                    <p><strong>Cantidad:</strong> 400ml. Ingredientes: Leche, sirope y oreos</p>
+                    <p class="price">Precio: 3,5 $</p>
+                    <div class="postre-image">
+                        <img src="Imagenes/Postres/imgBebida4.webp" alt="OreoShake">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+
+            <h2 class="section-title">Dulces</h2>
+            <div class="carousel-container">
+                <button class="flecha-nav">⬅</button>
+                <div class="info-card">
+                    <h3>Tiramisu</h3>
+                    <p><strong>Cantidad:</strong> 1 ración. Bizcocho de café</p>
+                    <p class="price">Precio: 3 $</p>
+                    <div class="postre-image">
+                        <img src="Imagenes/Postres/imgPostre1.webp" alt="Tiramisu">
+                    </div>
+                </div>
+                <button class="flecha-nav">➡</button>
+            </div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>
