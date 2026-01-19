@@ -36,12 +36,54 @@
         <button class="cat-btn" onclick="filtrar('entrantes')">Entrantes</button>
         <button class="cat-btn" onclick="filtrar('bebidas')">Bebidas</button>
         <button class="cat-btn" onclick="filtrar('postres')">Postres</button>
+        
+        <div class="search-container">
+            <input type="text" id="menuSearch" placeholder="Buscar producto...🔍" oninput="buscarProducto()">
+            <div id="searchResults" class="search-results"></div>
+        </div>
     </nav>
 
     <section id="Inicio" class="menu-section">
-        <h2 class="hero-title">Bienvenidos a Pizzeria Sur</h2>
-        <p style="color: white;">Selecciona una categoría para ver nuestras delicias.</p>
-    </section>
+    <div class="inicio-container">
+        <div class="inicio-texto">
+            <h2 class="hero-title">¿Quienes somos?</h2>
+            <p class="hero-subtitle">Somos una Pizzeria a las afueras de la ciudad de Madrid, nosotros somos una familia que nos dedicamos a las pizzas desde hace más de 50 años, tenemos recetas que no te podrás ni imaginar.</p>
+        </div>
+        <div class="inicio-imagen">
+            <img src="https://amasable.com/wp-content/uploads/2019/12/Pizza-al-horno-de-len%CC%83a-con-fuego-780x470.jpg" class="imgInicioD">
+        </div>
+    </div>
+
+    <div class="inicio-container-reverse">
+        <div class="inicio-imagen">
+            <img src="https://us.123rf.com/450wm/gorodenkoff/gorodenkoff2305/gorodenkoff230500128/204280589-en-el-restaurante-chef-profesional-preparando-pizza-amasando-masa-a%C3%B1adiendo-ingredientes-queso.jpg?ver=6" class="imgInicioI">
+        </div>
+        <div class="inicio-texto">
+            <h2 class="hero-title">Nuestra Tradición</h2>
+            <p class="hero-subtitle">Nuestra masa se fermenta durante 48 horas para asegurar una textura ligera y crujiente. Utilizamos ingredientes locales de la más alta calidad para que cada bocado sea una experiencia única.</p>
+        </div>
+    </div>
+
+    <div class="inicio-container">
+        <div class="inicio-texto">
+            <h2 class="hero-title">Ayudamos al planeta</h2>
+            <p class="hero-subtitle">Nuestra pizzería cuida el planeta eliminando el uso de plásticos de un solo uso en todos nuestros envíos. Utilizamos cajas de cartón 100% reciclado y compostable, asegurando que el sabor de Italia no deje una huella negativa en la Tierra.</p>
+        </div>
+        <div class="inicio-imagen">
+            <img src="https://media.istockphoto.com/id/867487552/photo/close-up-of-tasty-pizzas-with-variety-of-toppings-and-cheese-in-cardboard-take-out-boxes.jpg?s=612x612&w=0&k=20&c=9SDlnxFaLt9rcIosHT1dk2oYPmAA21OqTfwujo0AxSk=" class="imgInicioD">
+        </div>
+    </div>
+
+    <div class="inicio-container-reverse">
+        <div class="inicio-imagen">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/022/191/379/small/empty-wooden-table-in-front-of-golden-ears-of-wheat-background-generative-ai-free-photo.jpg" class="imgInicioI">
+        </div>
+        <div class="inicio-texto">
+            <h2 class="hero-title">Confian en nosotros</h2>
+            <p class="hero-subtitle">Apoyamos a los agricultores locales de Madrid comprando ingredientes de temporada. Esto reduce las emisiones de carbono por transporte y garantiza productos frescos, naturales y sin pesticidas para nuestras recetas tradicionales.</p>
+        </div>
+    </div>
+</section>
 
     <section id="promociones" class="menu-section">
         <div class="container-grid">
@@ -58,18 +100,15 @@
                     <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-
             <div class="menu-card">
                 <h2 class="section-title">Menús Pizzas Deluxe</h2>
                 <div class="slider-container">
                     <button class="flecha-btn">⬅</button>
                     <div class="info-box">
-                        <div class="info-box-body">
                         <h3 class="p-nombre"></h3>
                         <p class="p-desc"></p>
                         <p class="price">Precio: <span class="p-precio"></span> $</p>
                         <div class="pizza-image"><img src="" class="p-img"></div>
-                    </div>
                     </div>
                     <button class="flecha-btn-2">➡</button>
                 </div>
@@ -92,7 +131,6 @@
                     <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-
             <div class="menu-card">
                 <h2 class="section-title">Pizzas Deluxe</h2>
                 <div class="slider-container">
@@ -124,7 +162,6 @@
                     <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-
             <div class="menu-card">
                 <h2 class="section-title">Infusiones</h2>
                 <div class="slider-container">
@@ -156,7 +193,6 @@
                     <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-
             <div class="menu-card">
                 <h2 class="section-title">Tapas</h2>
                 <div class="slider-container">
@@ -188,7 +224,6 @@
                     <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-
             <div class="menu-card">
                 <h2 class="section-title">Dulces</h2>
                 <div class="slider-container">
