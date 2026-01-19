@@ -60,7 +60,8 @@ body {
 }
 
 .category-bar {
-    background : linear-gradient(rgb(2, 83, 17), 20%, rgb(3, 193, 38), 70%, rgb(2, 83, 17));    padding: 15px;
+    background: linear-gradient(#01500ef9, 30%, #02a83f, 70%, #01540ff9);
+    padding: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,6 +81,11 @@ body {
 
 .cat-btn:hover {
     background: linear-gradient(90deg, #848383f9, #030303);    color: white;
+}
+
+.search-container {
+    position: relative;
+    margin-left: 20px;
 }
 
 #menuSearch {
