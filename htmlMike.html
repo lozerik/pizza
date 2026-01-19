@@ -11,7 +11,6 @@
     <header class="main-header">
         <div class="logo">
             <span class="logo-text">𐌐𐌉ⱿⱿ𐌄𐌓𐌉𐌀 Ⲋꡕ𐍂</span>
-            <div class="pizza-icon"></div>
         </div>
         <nav class="top-nav">
             <a href="#" class="active">𝕄𝕖𝕟𝕦</a>
@@ -30,156 +29,181 @@
         </div>
     </section>
 
-   <nav class="category-bar">
-    <button class="cat-btn" onclick="filtrar('Inicio')">Inicio</button>
-    <button class="cat-btn" onclick="filtrar('promociones')">Promociones</button>
-    <button class="cat-btn" onclick="filtrar('pizzas')">Pizzas</button>
-    <button class="cat-btn" onclick="filtrar('entrantes')">Entrantes</button>
-    <button class="cat-btn" onclick="filtrar('bebidas')">Bebidas</button>
-    <button class="cat-btn" onclick="filtrar('postres')">Postres</button>
-</nav>
+    <nav class="category-bar">
+        <button class="cat-btn" onclick="filtrar('Inicio')">Inicio</button>
+        <button class="cat-btn" onclick="filtrar('promociones')">Promociones</button>
+        <button class="cat-btn" onclick="filtrar('pizzas')">Pizzas</button>
+        <button class="cat-btn" onclick="filtrar('entrantes')">Entrantes</button>
+        <button class="cat-btn" onclick="filtrar('bebidas')">Bebidas</button>
+        <button class="cat-btn" onclick="filtrar('postres')">Postres</button>
+    </nav>
 
-        <section id = Inicio class = menu-section>
-            <h2 class="hero-title">Bienvenidos a Pizzeria Sur</h2>
+    <section id="Inicio" class="menu-section">
+        <h2 class="hero-title">Bienvenidos a Pizzeria Sur</h2>
         <p style="color: white;">Selecciona una categoría para ver nuestras delicias.</p>
-        </section>
+    </section>
 
-        <section id = promociones class = menu-section>
-            <h2 class="section-title">Menús Pizzas Classic</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Menú Pizza Samuel's
-                            <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
-                            <p class="price">Precio: 13,99 $</p>
-                        <div class="pizza-image">
-                            <img src="Imagenes/Menús/imgMenu1.webp" alt="Pizza MeSamuel">
-                        </div>
-                        </div>
-                <button id = flechaDer>➡</button>
-       
-            <h2 class="section-title">Menús Pizzas Deluxe</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                    Menú Pizza Ramon's
-                            <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
-                            <p class="vegan-tag">Vegano</p>
-                            <p class="price">Precio: 12,99 $</p>
-                        <div class="pizza-image">
-                            <img src="Imagenes/Menús/imgMenu8.webp" alt="Pizza MeRamon">
+    <section id="promociones" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Menús Pizzas Classic</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
-                </div>
-                <button id = flechaDer>➡</button>
             </div>
-        </section>
 
-        <section id = pizzas class = menu-section>
-            <h2 class="section-title">Pizzas Classic</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Pizza Samuel's
-                            <p><strong>Ingredientes:</strong> Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
-                            <p class="price">Precio: 9,5 $</p>
-                        <div class="pizza-image">
-                            <img src="Imagenes/Pizzas/imgPizza1.webp" alt="Pizza Samuel">
-                        </div>
-                        </div>
-                <button id = flechaDer>➡</button>
-       
-            <h2 class="section-title">Menús Pizzas Deluxe</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                    Pizza Ramon's
-                            <p><strong>Ingredientes:</strong> Cheddar, Vacuno, Pepperoni, Maíz</p>
-                            <p class="vegan-tag">Vegano</p>
-                            <p class="price">Precio: 8,5 $</p>
-                        <div class="pizza-image">
-                            <img src="Imagenes/Pizzas/imgPizza7.webp" alt="Pizza Ramon">
+            <div class="menu-card">
+                <h2 class="section-title">Menús Pizzas Deluxe</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <div class="info-box-body">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
+                    </div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
-                </div>
-                <button id = flechaDer>➡</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id = bebidas class = menu-section>
-            <h2 class="section-title">Refrescos</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Coca Cola
-                            <p><strong>Cantidad: 330ml</strong>Original, Zero, Zero Zero</p>
-                            <p class="price">Precio: 2 $</p>
-                        <div class="bebida-image">
-                            <img src="Imagenes/Bebidas/imgBebida1.webp" alt="CocaCola">
-                        </div>
-                        </div>
-                <button id = flechaDer>➡</button>
-        
-            <h2 class="section-title">Infusiones</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                    Té Verde
-                            <p><strong>Cantidad: 250ml</strong>Té verde con un toque de menta</p>
-                            <p class="price">Precio: 1,5 $</p>
-                        <div class="bebida-image">
-                            <img src="Imagenes/Bebidas/imgBebida5.webp" alt="TeVerde">
+    <section id="pizzas" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Pizzas Classic</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
-                </div>
-                <button id = flechaDer>➡</button>
             </div>
-        </section>
 
-         <section id = postres class = menu-section>
-            <h2 class="section-title">Batidos</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>                        
-                    OreoShake
-                            <p><strong>Cantidad: 400ml</strong>Ingredientes: Leche, sirope y oreos</p>
-                            <p class="price">Precio: 3,5 $</p>
-                        <div class="postre-image">
-                            <img src="Imagenes/Postres/imgBebida4.webp" alt="OreoShake">
-                        </div>
-                        </div>
-                <button id = flechaDer>➡</button>
-        
-            <h2 class="section-title">Dulces</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Tiramisu
-                            <p><strong>Cantidad: 1 ración</strong>Bizcocho de café</p>
-                            <p class="price">Precio: 3 $</p>
-                        <div class="postre-image">
-                            <img src="Imagenes/Postres/imgPostre1.webp" alt="Cookie">
+            <div class="menu-card">
+                <h2 class="section-title">Pizzas Deluxe</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
-                </div>
-                <button id = flechaDer>➡</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id = entrantes class = menu-section>
-            <h2 class="section-title">Fritos</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Nuggets
-                            <p><strong>Cantidad: 5 unidades</strong>Nuggets de pollo fritos</p>
-                            <p class="price">Precio: 2,5 $</p>
-                        <div class="entrante-image">
-                            <img src="Imagenes/Entrantes/imgEntrante1.webp" alt="Nuggets">
-                        </div>
-                        </div>
-                <button id = flechaDer>➡</button>
-        
-            <h2 class="section-title">Tapas</h2>
-                <button id = flechaIzq>⬅</button>
-                <div id = info>
-                        Gildas
-                            <p><strong>Cantidad: 5 unidades</strong>Gildas con boquerones en vinagre</p>
-                            <p class="price">Precio: 2,5 $</p>
-                        <div class="entrante-image">
-                            <img src="Imagenes/Entrantes/imgEntrante4.webp" alt="Gildas">
+    <section id="bebidas" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Refrescos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="bebida-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
-                </div>
-                <button id = flechaDer>➡</button>
             </div>
-        </section>
+
+            <div class="menu-card">
+                <h2 class="section-title">Infusiones</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="bebida-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entrantes" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Fritos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="entrante-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h2 class="section-title">Tapas</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="entrante-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="postres" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Batidos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="postre-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h2 class="section-title">Dulces</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="postre-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
