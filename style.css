@@ -1,6 +1,17 @@
 /* =========================================
-   1. FUENTES PERSONALIZADAS (Importadas del Bloque 2)
+   1. VARIABLES Y FUENTES PERSONALIZADAS
    ========================================= */
+:root {
+    --primary-red: #e72f2b;
+    --primary-green: #1c461f;
+    --accent-green: #2ecc71;
+    --btn-hover: #1b7a06;
+    --white: #ffffff;
+    --shadow: 0 10px 20px rgba(0,0,0,0.5);
+    /* Degradado temático italiano usado en cajas y títulos */
+    --italy-gradient: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+}
+
 @font-face {
     font-family: 'rice';
     src: url('fuentes/RiceBall.otf') format('truetype');
@@ -22,74 +33,83 @@
 }
 
 /* =========================================
-   2. RESET Y BASE
+   2. RESET Y ESTILOS BASE
    ========================================= */
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
     font-family: 'Arial Black', sans-serif;
-    background-color: #1c461f; /* Fondo verde oscuro */
+    background-color: var(--primary-green);
     overflow-x: hidden;
+    color: var(--white);
 }
 
 /* =========================================
-   3. HEADER Y LOGO
+   3. HEADER Y NAVEGACIÓN SUPERIOR
    ========================================= */
 .main-header {
-    background-color: #e72f2b;
+    background-color: var(--primary-red);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     color: white;
 }
 
 .logo-text { 
     font-size: 2rem; 
     font-weight: bold;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'title'; /* Fuente del bloque 2 */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     color: white;
-    font-family: 'title'; /* Fuente aplicada del Bloque 2 */
+    text-decoration: none;
 }
 
+.logo-text:hover { transform: scale(1.1); }
+
 .top-nav a {
-    color: white;
+    color: var(--white);
     text-decoration: none;
     text-transform: uppercase;
     margin: 0 15px;
     font-size: 0.9rem;
-    font-family: 'seagram'; /* Fuente aplicada del Bloque 2 */
+    font-family: 'seagram'; /* Fuente del bloque 2 */
 }
 
+.separator { margin: 0 5px; }
+
 /* =========================================
-   4. HERO BANNER (ESTÉTICA PRINCIPAL)
+   4. HERO BANNER
    ========================================= */
 .hero-banner {
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                      url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80');
-    background-size: cover;
-    background-position: center;
-    height: 900px;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80') center/cover;
+    height: 900px; /* Altura premium del bloque 2 */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-bottom: 5px solid #e72f2b;
+    border-bottom: 5px solid var(--primary-red);
 }
 
 .hero-title {
-    color: white;
-    font-size: 4.5rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
     margin: 0;
     text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
-    font-family: 'sevesbrg'; /* Fuente aplicada del Bloque 2 */
+    font-family: 'sevesbrg'; /* Fuente del bloque 2 */
 }
 
 .hero-subtitle {
-    color: white;
     font-size: 1.2rem;
     letter-spacing: 2px;
     text-shadow: 2px 2px 2px red;
+    margin-top: 10px;
 }
 
 .reserva-btn-main {
@@ -105,44 +125,43 @@ body {
     transition: 0.3s;
 }
 
+.reserva-btn-main:hover { transform: scale(1.05); background-color: #1b7a06; }
+
 /* =========================================
-   5. CATEGORÍAS Y BOTONES
+   5. BARRA DE CATEGORÍAS
    ========================================= */
 .category-bar {
-    background-color: #2ecc71;
+    background-color: var(--accent-green);
     padding: 15px;
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .cat-btn {
-    background: white;
-    color: #e72f2b;
+    background: var(--white);
+    color: var(--primary-red);
     border: none;
     padding: 8px 20px;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-}   
+}
 
 .cat-btn:hover {
-    background-color: #1b7a06 !important;
-    color: white !important;
+    background-color: var(--btn-hover) !important;
+    color: var(--white) !important;
     transform: scale(1.1);
 }
 
 /* =========================================
-   6. SECCIONES DEL MENÚ
+   6. SECCIONES DEL MENÚ Y CONTENEDORES
    ========================================= */
-
-
-   /* He metido la degradacion en el menu para hacer que tenga ese efecto de difuminado*/
 .menu-container {
     padding: 20px 0;
-   /*  background-image: linear-gradient(to bottom, rgb(133, 3, 3),10%, rgb(248, 5, 42),rgb(255, 7, 7),90%,rgb(133, 3, 3));*/
-   background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+    background-image: linear-gradient(to right, rgb(5, 12, 1), rgb(24, 109, 7), black);
 }
 
 .menu-section {
@@ -150,35 +169,57 @@ body {
     margin-bottom: 20px;
     border-radius: 20px;
     text-align: center;
-    display: none; /* Se controla con JS */
+    display: none; /* Controlado por JS */
 }
 
-#Inicio {
-    display: block; /* Solo inicio visible por defecto */
+#Inicio { display: block; }
+
+.container-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.menu-card {
+    flex: 1;
+    min-width: 350px;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   7. CAJAS DE INFORMACIÓN Y TARJETAS
+   ========================================= */
+.info-box {
+    background: var(--italy-gradient);
+    border-radius: 20px;
+    border: 10px solid rgb(13, 13, 13);
+    padding: 20px;
+    color: #000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    flex: 1;
+    height: 100%;
 }
 
 .section-title {
-    background-color: #2ecc71;
-    color: white;
-    padding: 10px 30px;
-    border-radius: 50px;
+    background: var(--italy-gradient);
+    border-radius: 20px;
+    border: 6px solid #000000;
+    color: #000;
+    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 15px;
     text-transform: uppercase;
-    font-family: 'rice'; /* Fuente aplicada del Bloque 2 */
+    font-family: 'rice'; /* Fuente del bloque 2 */
 }
 
+/* Clases específicas de colores para secciones */
 .classic { background-color: #1b7a06; color: white; }
 .deluxe { background-color: #ae1512; color: white; }
-
-/* =========================================
-   7. IMÁGENES Y CONTENEDORES
-   ========================================= */
-.pizza-image img, .bebida-image img, 
-.entrante-image img, .postre-image img {
-    border: 5px solid white;
-    width: 300px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    border-radius: 10px;
-}
 
 #info {
     background-color: #b8fb91;
@@ -200,14 +241,76 @@ body {
     border: 1px dashed white;
 }
 
-.sub-seccion h3 {
-    text-decoration: underline;
-    color: #ffd700;
+/* =========================================
+   8. IMÁGENES Y EFECTOS
+   ========================================= */
+.pizza-image img, .bebida-image img, 
+.entrante-image img, .postre-image img, .p-img {
+    max-width: 100%; 
+    height: 250px;
+    width: 350px;
+    border: 5px solid var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.5s ease-in-out; 
+    backface-visibility: hidden;
+}
+
+.pizza-image img:hover, .bebida-image img:hover, 
+.entrante-image img:hover, .postre-image img:hover, .p-img:hover {
+    transform: rotate(5deg);
 }
 
 /* =========================================
-   8. NAVEGACIÓN (FLECHAS)
+   9. SLIDERS Y FLECHAS (NAVEGACIÓN)
    ========================================= */
+.slider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Botones por Clase (Bloque 1) */
+.flecha-btn {
+    color: #000;
+    background: linear-gradient(90deg, #ff0202f9, #7d0303);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.flecha-btn-2 {
+    color: #000;
+    background: linear-gradient(90deg, #37d70b, #034804);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.flecha-btn:hover, .flecha-btn-2:hover {
+    transform: scale(1.2);
+}
+
+/* Botones por ID (Bloque 2) */
 #flechaIzq, #flechaDer {
     color: #000000;
     background-color: #e66a6a;  
@@ -223,12 +326,11 @@ body {
     justify-content: center;
 }
 
-#flechaIzq:hover, #flechaDer:hover {
-    transform: scale(1.2);
-}
+#flechaIzq:hover, #flechaDer:hover { transform: scale(1.2); }
 
-
-.separador{
-    margin-top: 200px;
-}
-
+/* =========================================
+   10. UTILIDADES
+   ========================================= */
+.separador { margin-top: 200px; }
+.price { font-weight: bold; font-size: 1.2rem; }
+.vegan-tag { color: green; font-weight: bold; }
