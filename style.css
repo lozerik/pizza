@@ -1,33 +1,39 @@
-/*Fuentes*/
+/* =========================================
+   1. FUENTES PERSONALIZADAS (Importadas del Bloque 2)
+   ========================================= */
 @font-face {
-  font-family: 'rice';
-  src: url('fuentes/RiceBall.otf') format('truetype');
+    font-family: 'rice';
+    src: url('fuentes/RiceBall.otf') format('truetype');
 }
 
 @font-face {
-  font-family: 'title';
-  src: url('fuentes/HangedLetters.ttf') format('truetype');
+    font-family: 'title';
+    src: url('fuentes/HangedLetters.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'seagram';
-  src: url('fuentes/Seagram.ttf') format('truetype');
+    font-family: 'seagram';
+    src: url('fuentes/Seagram.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'sevesbrg';
-  src: url('fuentes/sevesbrg.ttf') format('truetype');
+    font-family: 'sevesbrg';
+    src: url('fuentes/sevesbrg.ttf') format('truetype');
 }
 
-/* RESET Y BASE */
+/* =========================================
+   2. RESET Y BASE
+   ========================================= */
 body {
     margin: 0;
     font-family: 'Arial Black', sans-serif;
-    background-color: #1c461f; /* Fondo oscuro para que resalte la comida */
+    background-color: #1c461f; /* Fondo verde oscuro */
     overflow-x: hidden;
 }
 
-/* HEADER */
+/* =========================================
+   3. HEADER Y LOGO
+   ========================================= */
 .main-header {
     background-color: #e72f2b;
     display: flex;
@@ -43,7 +49,7 @@ body {
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     color: white;
-    font-family: 'title';
+    font-family: 'title'; /* Fuente aplicada del Bloque 2 */
 }
 
 .top-nav a {
@@ -52,16 +58,15 @@ body {
     text-transform: uppercase;
     margin: 0 15px;
     font-size: 0.9rem;
-    font-family: 'seagram';
+    font-family: 'seagram'; /* Fuente aplicada del Bloque 2 */
 }
 
-/* BANNER ESTILO IMAGEN CARGADA  ESTO ES LA MAGIA DE CSS QUE NOS VA A DAR MAZO ESTETICA (PRINCIPALMENTE PORQUE YA CON ESTO TENEMOS MEJOR APARTADO VISUAL QUE 
-DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO DEL MENU VOY PARTE POR PARTE*/
+/* =========================================
+   4. HERO BANNER (ESTÉTICA PRINCIPAL)
+   ========================================= */
 .hero-banner {
-    /*Esto se encarga de añadirle un sombreado a las imagenes que van transicionando en el fondo para darle mejor estetica (porfa no lo quiteis ha sido un dolor de cabeza entenderlo y encontrarlo)*/
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80');
-
-    /*Esto ya lo sabeis sino ESTUDIAR CSS PERRROSSS*/
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                      url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80');
     background-size: cover;
     background-position: center;
     height: 400px;
@@ -72,18 +77,15 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     border-bottom: 5px solid #e72f2b;
 }
 
-/*Se encarga del titulo no mucho misterio mas que darle un sombreado verde para hacer que entre muy bien por los ojos */
 .hero-title {
     color: white;
     font-size: 4.5rem;
     margin: 0;
     text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
-    font-family: 'sevesbrg';
-
+    font-family: 'sevesbrg'; /* Fuente aplicada del Bloque 2 */
 }
 
 .hero-subtitle {
-    /*el texto que esta abajo del texto grande como en la pagina que use de referencia estaba la frasecita del tony romas pues decidi usarla*/
     color: white;
     font-size: 1.2rem;
     letter-spacing: 2px;
@@ -91,11 +93,8 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
 }
 
 .reserva-btn-main {
-    /*
-    esto se encarga del boton de Reserva dentro del banner
-    */
     display: inline-block;
-    background-color:   #1eb120;
+    background-color: #1eb120;
     color: white;
     padding: 12px 35px;
     border-radius: 50px;
@@ -106,9 +105,9 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     transition: 0.3s;
 }
 
-/* CATEGORIAS Y BOTONES */
-
-/*animaciones para los botones chulas*/
+/* =========================================
+   5. CATEGORÍAS Y BOTONES
+   ========================================= */
 .category-bar {
     background-color: #2ecc71;
     padding: 15px;
@@ -126,7 +125,7 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-}
+}   
 
 .cat-btn:hover {
     background-color: #1b7a06 !important;
@@ -134,9 +133,28 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     transform: scale(1.1);
 }
 
-/* MENU Y SECCIONES */
+/* =========================================
+   6. SECCIONES DEL MENÚ
+   ========================================= */
+
+
+   /* He metido la degradacion en el menu para hacer que tenga ese efecto de difuminado*/
 .menu-container {
     padding: 20px 0;
+   /*  background-image: linear-gradient(to bottom, rgb(133, 3, 3),10%, rgb(248, 5, 42),rgb(255, 7, 7),90%,rgb(133, 3, 3));*/
+   background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+}
+
+.menu-section {
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    text-align: center;
+    display: none; /* Se controla con JS */
+}
+
+#Inicio {
+    display: block; /* Solo inicio visible por defecto */
 }
 
 .section-title {
@@ -145,19 +163,72 @@ DOMINOS PIZZA) ES BASICAMENTE LO QUE SE ENCARGA DE TODO LO DE LA IMAGEN DE FONDO
     padding: 10px 30px;
     border-radius: 50px;
     text-transform: uppercase;
-    font-family: 'rice';
+    font-family: 'rice'; /* Fuente aplicada del Bloque 2 */
 }
 
-.classic { background-color: #1b7a06;
-            color: white; }
-.deluxe { background-color: #ae1512;
-            color: white }
+.classic { background-color: #1b7a06; color: white; }
+.deluxe { background-color: #ae1512; color: white; }
 
-
-
-.pizza-image img {
+/* =========================================
+   7. IMÁGENES Y CONTENEDORES
+   ========================================= */
+.pizza-image img, .bebida-image img, 
+.entrante-image img, .postre-image img {
     border: 5px solid white;
     width: 300px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+#info {
+    background-color: #b8fb91;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 80%;
+    color: #000;
+}
+
+.sub-seccion {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%; 
+    margin: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px dashed white;
+}
+
+.sub-seccion h3 {
+    text-decoration: underline;
+    color: #ffd700;
+}
+
+/* =========================================
+   8. NAVEGACIÓN (FLECHAS)
+   ========================================= */
+#flechaIzq, #flechaDer {
+    color: #000000;
+    background-color: #e66a6a;  
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border: 2px solid rgb(0, 0, 0);
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#flechaIzq:hover, #flechaDer:hover {
+    transform: scale(1.2);
+}
+
+
+.separador{
+    margin-top: 200px;
 }
 
