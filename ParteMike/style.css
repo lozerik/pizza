@@ -1,24 +1,16 @@
-:root {
-    --primary-red: #e72f2b;
-    --primary-green: #1c461f;
-    --accent-green: #2ecc71;
-    --btn-hover: #1b7a06;
-    --white: #ffffff;
-    --shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
     font-family: 'Arial Black', sans-serif;
-    background-color: var(--primary-green);
+    
     overflow-x: hidden;
-    color: var(--white);
+    color: white
 }
 
+
 .main-header {
-    background-color: var(--primary-red);
+    background : linear-gradient(red, 20%, rgb(112, 1, 1), 70%, red);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,23 +29,22 @@ body {
 .logo-text:hover { transform: scale(1.1); }
 
 .top-nav a {
-    color: var(--white);
+    color: white;
     text-decoration: none;
     text-transform: uppercase;
     margin: 0 15px;
     font-size: 0.9rem;
 }
 
+
 .hero-banner {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80') center/cover;
-    height: 400px;
+    height: 750px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-bottom: 5px solid var(--primary-red);
 }
 
 .hero-title {
@@ -62,18 +53,23 @@ body {
     text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
 }
 
+.hero-subtitle {
+    margin: 0;
+    text-shadow: 3px 3px 10px rgba(234, 43, 29, 0.8);
+    
+}
+
 .category-bar {
-    background-color: var(--accent-green);
-    padding: 15px;
+    background : linear-gradient(rgb(2, 83, 17), 20%, rgb(3, 193, 38), 70%, rgb(2, 83, 17));    padding: 15px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     flex-wrap: wrap;
 }
 
 .cat-btn {
-    background: var(--white);
-    color: var(--primary-red);
+    background: linear-gradient(90deg, #fffffff9, #b8b8b8);
     border: none;
     padding: 8px 20px;
     border-radius: 10px;
@@ -83,9 +79,148 @@ body {
 }
 
 .cat-btn:hover {
-    background-color: var(--btn-hover) !important;
-    color: var(--white) !important;
+    background: linear-gradient(90deg, #848383f9, #030303);    color: white;
 }
+
+#menuSearch {
+    margin-left: 20px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+    outline: none;
+    width: 220px;
+    background: linear-gradient(90deg, #fffffff9, #cac9c9);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #fffffff9, #b8b8b8);
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 2000;
+    box-shadow: 5px 5px 5px rgb(91, 91, 91);
+    display: none;
+}
+
+.search-item {
+    padding: 10px;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+}
+
+.search-item:hover { background-color: #f0f0f0; color: red; }
+
+
+
+.inicio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: left;
+}
+
+
+.inicio-container-reverse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px 20px;
+    text-align: right; 
+}
+
+#Inicio {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/514467132/es/foto/tradicional-de-horno.jpg?b=1&s=612x612&w=0&k=20&c=-D-4MZ0pzN_WO8DLQXfdxMw4J2d1aykg1Y4lxZSXtPY=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#promociones {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/1441253725/es/foto/el-chef-pone-la-margherita-cuatro-quesos-o-pizza-de-carne-en-una-pala-en-el-horno-un-horno-de.jpg?s=612x612&w=0&k=20&c=Gu2c0GvHNUelNwPW581ZFfiSDPE7se1qCsAo18QB2sg=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#pizzas {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://img.freepik.com/premium-photo/delicious-pepperoni-pizza-dark-background-sausage-pizza-italian-pepperoni-pizza-pizzeria_79782-5023.jpg?semt=ais_hybrid&w=740&q=80') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#entrantes {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://www.periodistadigital.com/wp-content/uploads/2010/11/nuggets-intro.jpg') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#bebidas {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/157636846/es/foto/fizz.jpg?s=612x612&w=0&k=20&c=QfZwok1E3dKDlmG1ZzWuSlqFfyIXVlLmTyCBT9ri03c=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#postres {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://static.vecteezy.com/system/resources/thumbnails/070/283/854/small/a-white-plate-with-a-bunch-of-different-desserts-photo.jpg') center/cover fixed;
+    margin-bottom: 0;
+}
+
+.inicio-texto {
+    flex: 1;
+}
+
+.inicio-imagenD {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.imgInicioD, .imgInicioI  {
+    border: 5px solid white;
+    box-shadow: 2px 2px 10px black;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.imgInicioD:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.imgInicioI:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
 
 .container-grid {
     display: flex;
@@ -106,7 +241,7 @@ body {
 
 .reserva-btn-main {
     display: inline-block;
-    background-color:   #1eb120;
+    background-color: #1eb120;
     color: white;
     padding: 12px 35px;
     border-radius: 50px;
@@ -140,15 +275,19 @@ body {
     max-width: 100%; 
     height: 250px;
     width: 350px;
-    border: 5px solid var(--white);
+    border: 5px solid white;
     border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: transform 0.5s ease-in-out; 
-    backface-visibility: hidden;
+    box-shadow: 5px 5px 5px black;
+    transition: transform 0.3s ease;
 }
-.flecha-btn {
+
+.pizza-image img:hover, .bebida-image img:hover, .entrante-image img:hover, .postre-image img:hover {
+    transform: rotate(5deg);
+}
+
+
+.flecha-btn, .flecha-btn-2 {
     color: #000;
-    background: linear-gradient(90deg, #ff0202f9, #7d0303);
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid #000;
@@ -158,59 +297,46 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0; 
-    transition: transform 0.2s;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
-.flecha-btn:hover {
-    transform: scale(1.2);
-    background: linear-gradient(90deg, #f27e7e, #ff0000);
-}
-.pizza-image img:hover, .bebida-image img:hover, .entrante-image img:hover, .postre-image img:hover {
-    transform: rotate(5deg);
-    
-}
+.flecha-btn { background: linear-gradient(90deg, #ff0202f9, #7d0303); }
+.flecha-btn-2 { background: linear-gradient(90deg, #37d70b, #034804); }
+
+.flecha-btn:hover { transform: scale(1.1); background: linear-gradient(90deg, #d75050f9, #ff0000); }
+.flecha-btn-2:hover { transform: scale(1.1); background: linear-gradient(90deg, #4dd727, #048a06); }
+
 
 .info-box {
-    background: linear-gradient(to right,red,20%,  #f6f9f6, #057b05);
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
     border-radius: 20px;
     border: 10px solid rgb(13, 13, 13);
     padding: 20px;
     color: #000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    flex: 1; 
-    height: 100%;
-}
-
-
-
-.flecha-btn-2 {
-    color: #000;
-    background: linear-gradient(90deg, #37d70b, #034804);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #000;
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; 
-    transition: transform 0.2s;
-}
-
-.flecha-btn-2:hover{
-    transform: scale(1.2);
-    background: linear-gradient(90deg, #09d468, #03871d);
+    width: 590px;
+    height: 500px;
 }
 
 .section-title {
-    background: linear-gradient(to right,red,20%,  #f6f9f6, #057b05);
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
     border-radius: 20px;
     border: 6px solid #000000;
     color: #000;
     padding: 10px 20px;
     width: 100%;
     margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .inicio-container, .inicio-container-reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .inicio-container-reverse {
+        flex-direction: column-reverse; 
+    }
 }
