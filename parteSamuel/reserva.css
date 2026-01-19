@@ -14,12 +14,15 @@ ul {
     margin: auto 10px;
     align-items: center;
     width: 100%;
-    background-color: #1eb120;
     padding: 25px;
+    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+    color: white;
 }
 
 #reserva {
     position: sticky;
     top: 0;
     width: 100%;
+    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+
 }
