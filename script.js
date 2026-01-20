@@ -1,135 +1,158 @@
-/* ============================================================
-   1. EFECTO VISUAL: LATIDO DEL BOTÓN DE RESERVA
-   ============================================================ */
+let menuData = {}; 
+let indices = {};  
+
 const btnReserva = document.querySelector('.reserva-btn-main');
 
-function latido() {
-    // Verificamos existencia para evitar errores en consola si el botón no está en el DOM
-    if (btnReserva) {
-        btnReserva.style.transition = "transform 0.2s";
+setInterval(() => {
+    if(btnReserva) {
         btnReserva.style.transform = "scale(1.1)";
-        setTimeout(() => {
-            btnReserva.style.transform = "scale(1)";
-        }, 200);
+        setTimeout(() => btnReserva.style.transform = "scale(1)", 200);
     }
-}
-// El botón "late" cada 3 segundos
-setInterval(latido, 3000);
+}, 3000);
 
-/* ============================================================
-   2. SISTEMA DE FILTRADO POR CATEGORÍAS
-   (Añadido por Mike: Muestra la sección del botón pulsado)
-   ============================================================ */
-function filtrar(categoria) {
-    const secciones = document.querySelectorAll('.menu-section');
-    
-    secciones.forEach(seccion => {
-        if (seccion.id === categoria) {
-            seccion.style.display = 'block';
-        } else {
-            seccion.style.display = 'none';
-        }
-    });
-}
-
-/* ============================================================
-   3. LÓGICA DE CARGA DINÁMICA Y SLIDERS (JSON)
-   ============================================================ */
-let menuData = {}; // Almacena los datos del JSON
-let indices = {};  // Controla el índice actual de cada slider
-
-// Función para cargar el archivo de datos
 async function cargarMenu() {
     try {
         const response = await fetch('datos.json');
         menuData = await response.json();
         inicializarSecciones();
     } catch (error) {
-        console.error("Error cargando el menú (datos.json no encontrado):", error);
+        console.error("Error cargando el menú:", error);
     }
 }
 
-// Configura los eventos de las flechas y rellena la info inicial
-function inicializarSecciones() {
-    const cards = document.querySelectorAll('.menu-card');
-
-    cards.forEach(card => {
-        const tituloSeccion = card.querySelector('.section-title').innerText.trim();
-        
-        // Creamos una clave única para los índices (ej: "fritos", "pizzas_classic")
-        const key = tituloSeccion.toLowerCase().replace(/\s+/g, '_');
-        indices[key] = 0;
-
-        // Configurar botones de navegación
-        const btnIzq = card.querySelector('.flecha-btn, .flecha-btn:first-of-type, #flechaIzq');
-        const btnDer = card.querySelector('.flecha-btn-2, .flecha-btn-2:last-of-type, #flechaDer');
-
-        if (btnDer) btnDer.onclick = () => cambiarProducto(card, tituloSeccion, 1);
-        if (btnIzq) btnIzq.onclick = () => cambiarProducto(card, tituloSeccion, -1);
-
-        // Carga el primer producto inmediatamente
-        cambiarProducto(card, tituloSeccion, 0);
+function filtrar(categoria) {
+    document.querySelectorAll('.menu-section').forEach(sec => {
+        // Solo muestra la seccion cuyo ID coincide con el boton pulsado
+        sec.style.display = (sec.id === categoria) ? 'block' : 'none';
     });
 }
 
-/**
- * Lógica para mapear el título de la sección con los datos del JSON
- * y actualizar el contenido visual de la tarjeta.
- */
+function inicializarSecciones() {
+    document.querySelectorAll('.menu-card').forEach(card => {
+        const titulo = card.querySelector('.section-title').innerText.trim();
+        // Crea una clave unica (ej. pizzas_classic) para trackear el indice de cada slider
+        const key = titulo.toLowerCase().replace(/\s+/g, '_');
+        indices[key] = 0;
+
+        card.querySelector('.flecha-btn').onclick = () => cambiarProducto(card, titulo, -1);
+        card.querySelector('.flecha-btn-2').onclick = () => cambiarProducto(card, titulo, 1);
+
+        cambiarProducto(card, titulo, 0);
+    });
+}
+
+function obtenerProductosPorTitulo(titulo) {
+    const sK = titulo.toLowerCase();
+    // Mapeo manual para vincular los titulos del HTML con las rutas del JSON
+    if (sK === "fritos") return menuData.entrantes.fritos;
+    if (sK === "tapas") return menuData.entrantes.tapas;
+    if (sK.includes("classic")) return sK.includes("menú") ? menuData.promociones.clasicas : menuData.pizzas.clasicas;
+    if (sK.includes("deluxe")) return sK.includes("menú") ? menuData.promociones.deluxe : menuData.pizzas.deluxe;
+    if (sK === "refrescos") return menuData.bebidas.refrescos;
+    if (sK === "infusiones") return menuData.bebidas.infusiones;
+    if (sK === "batidos") return menuData.postres.batidos;
+    if (sK === "dulces") return menuData.postres.dulces;
+    return [];
+}
+
 function cambiarProducto(card, tituloSeccion, direccion) {
     const keyIndex = tituloSeccion.toLowerCase().replace(/\s+/g, '_');
-    const searchKey = tituloSeccion.toLowerCase();
-    
-    let productos = [];
+    const productos = obtenerProductosPorTitulo(tituloSeccion);
 
-    // Mapeo de categorías basado en el texto del título
-    if (searchKey === "fritos") productos = menuData.entrantes?.fritos;
-    else if (searchKey === "tapas") productos = menuData.entrantes?.tapas;
-    else if (searchKey.includes("classic")) {
-        productos = searchKey.includes("menú") ? menuData.promociones?.clasicas : menuData.pizzas?.clasicas;
-    } 
-    else if (searchKey.includes("deluxe")) {
-        productos = searchKey.includes("menú") ? menuData.promociones?.deluxe : menuData.pizzas?.deluxe;
-    }
-    else if (searchKey === "refrescos") productos = menuData.bebidas?.refrescos;
-    else if (searchKey === "infusiones") productos = menuData.bebidas?.infusiones;
-    else if (searchKey === "batidos") productos = menuData.postres?.batidos;
-    else if (searchKey === "dulces") productos = menuData.postres?.dulces;
+    if (!productos.length) return;
 
-    // Si no se encuentran productos para esa categoría, salimos
-    if (!productos || productos.length === 0) return;
-
-    // Actualización circular del índice
+    // Actualiza el indice y crea un bucle infinito (del ultimo vuelve al primero)
     indices[keyIndex] += direccion;
     if (indices[keyIndex] >= productos.length) indices[keyIndex] = 0;
     if (indices[keyIndex] < 0) indices[keyIndex] = productos.length - 1;
 
-    // Extraemos el objeto del producto actual
     const item = productos[indices[keyIndex]];
-
-    // Actualización del DOM
-    const nombreElemento = card.querySelector('.p-nombre');
-    const precioElemento = card.querySelector('.p-precio');
-    const imagenElemento = card.querySelector('.p-img');
-    const descElemento = card.querySelector('.p-desc');
-
-    if (nombreElemento) nombreElemento.innerText = item.nombre;
-    if (precioElemento) precioElemento.innerText = item.precio;
+    card.querySelector('.p-nombre').innerText = item.nombre;
+    card.querySelector('.p-precio').innerText = item.precio;
+    // Asume que las imagenes son archivos .webp
+    card.querySelector('.p-img').src = item.imagen + ".webp";
     
-    if (imagenElemento) {
-        // Se asume que en el JSON viene el nombre base y aquí añadimos la extensión
-        imagenElemento.src = item.imagen.includes('.') ? item.imagen : item.imagen + ".webp"; 
-        imagenElemento.alt = item.nombre;
-    }
-
-    if (descElemento) {
-        descElemento.innerText = item.ingredientes || item.descripcion || `Cantidad: ${item.unidades || item.cantidad}`;
+    const desc = card.querySelector('.p-desc');
+    if (desc) {
+        // Muestra ingredientes o cantidad segun lo que este disponible en el JSON
+        desc.innerText = item.ingredientes || item.descripcion || `Cantidad: ${item.unidades || item.cantidad}`;
     }
 }
 
-/* ============================================================
-   4. INICIALIZACIÓN AL CARGAR EL DOCUMENTO
-   ============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-    cargarMenu();
+function buscarProducto() {
+    const query = document.getElementById('menuSearch').value.toLowerCase().trim();
+    const res = document.getElementById('searchResults');
+    
+    if (query.length < 2) { 
+        res.style.display = 'none'; 
+        return; 
+    }
+
+    let html = "";
+    // Triple bucle para rastrear: Categoria -> Subcategoria -> Producto
+    for (let cat in menuData) {
+        for (let sub in menuData[cat]) {
+            menuData[cat][sub].forEach(p => {
+                if (p.nombre.toLowerCase().includes(query)) {
+                    let nombreSubCard = traducirSub(sub, cat);
+                    // Al hacer click, envia categoria, subcategoria y nombre exacto
+                    html += `<div class="search-item" onclick="seleccionarExacto('${cat}', '${nombreSubCard}', '${p.nombre}')">
+                        <strong>${p.nombre}</strong> <br><small>${cat} > ${nombreSubCard}</small>
+                    </div>`;
+                }
+            });
+        }
+    }
+    res.innerHTML = html || '<div class="search-item">Sin resultados</div>';
+    res.style.display = 'block';
+}
+
+function traducirSub(sub, cat) {
+    // Convierte terminos del JSON a los nombres reales de las etiquetas h2 del HTML
+    const mapa = {
+        "fritos": "Fritos", 
+        "tapas": "Tapas", 
+        "refrescos": "Refrescos", 
+        "infusiones": "Infusiones", 
+        "batidos": "Batidos", 
+        "dulces": "Dulces",
+        "clasicas": (cat === "pizzas") ? "Pizzas Classic" : "Menús Pizzas Classic",
+        "deluxe": (cat === "pizzas") ? "Pizzas Deluxe" : "Menús Pizzas Deluxe"
+    };
+    return mapa[sub] || sub;
+}
+
+function seleccionarExacto(idSeccion, tituloCard, nombreProd) {
+    filtrar(idSeccion);
+    
+    const cards = document.querySelectorAll(`#${idSeccion} .menu-card`);
+    cards.forEach(card => {
+        const h2 = card.querySelector('.section-title').innerText.trim();
+        // Solo actua sobre la tarjeta que contiene el producto buscado
+        if (h2 === tituloCard) {
+            const productos = obtenerProductosPorTitulo(tituloCard);
+            const index = productos.findIndex(p => p.nombre === nombreProd);
+            
+            if (index !== -1) {
+                const key = tituloCard.toLowerCase().replace(/\s+/g, '_');
+                // Sincroniza el slider para que muestre el producto encontrado
+                indices[key] = index; 
+                cambiarProducto(card, tituloCard, 0); 
+                // Centra la pantalla en el producto encontrado
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('menuSearch').value = '';
+}
+
+document.addEventListener('click', (e) => {
+    const container = document.querySelector('.search-container');
+    if (container && !container.contains(e.target)) {
+        document.getElementById('searchResults').style.display = 'none';
+    }
 });
+
+document.addEventListener("DOMContentLoaded", cargarMenu);
