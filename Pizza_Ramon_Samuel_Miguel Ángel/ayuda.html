@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𐌐𐌉ⱿⱿ𐌄𐍂𐌉𐌀 Ⲋꡕ𐍂 - Ayuda</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ayuda.css"></link>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <span class="logo-text">𐌐𐌉ⱿⱿ𐌄𐌓𐌉𐌀 Ⲋꡕ𐍂</span>
+        </div>
+        <nav class="top-nav">
+            <a href="pizza.html" class="active">Menú</a>
+            <span class="separator">|</span>
+            <a href="reserva.html">Reserva</a>
+            <span class="separator">|</span>
+            <a href="contacto.html">Contacto</a>
+            <span class="separator">|</span>
+            <a href="ayuda.html" class="reserva-btn">Ayuda</a>
+        </nav>
+    </header>
+    <div class="main">
+        <h1 id="title">AYUDA</h1>
+        <div class="button-question" onclick="mostrar('q1')">
+            <h2>¿Tienen opciones para dietas especiales?</h2>
+            <p id="q1">¡Claro que sí! Queremos que todos disfruten. En nuestro menú verás iconos específicos para opciones veganas y vegetarianas. También contamos con masa sin gluten, aunque recuerda que en nuestras cocinas se manipula harina de trigo, por lo que existe riesgo de contaminación cruzada.</p>
+        </div>
+        <div class="button-question" onclick="mostrar('q2')">
+            <h2>¿Es necesario reservar mesa o puedo ir directamente?</h2>
+            <p id="q2">¡Siempre eres bienvenido! Sin embargo, para asegurar que no tengas que esperar (especialmente los fines de semana o festivos), te recomendamos reservar con antelación. Puedes hacerlo directamente desde el botón "Reservar" en nuestra web.</p>
+        </div>
+            <div class="button-question" onclick="mostrar('q3')">
+            <h2>¿El local es "Pet Friendly" o tiene terraza?</h2>
+            <p id="q3">¡Tus amigos peludos también son parte de la familia! Admitimos mascotas en nuestra zona de terraza (sujeto a disponibilidad y clima). En el interior del local, por normativa sanitaria, el acceso está limitado a perros guía.</p>
+        </div>
+    </div>
+    <script src="ayuda.js"></script>
+</body>
+</html>

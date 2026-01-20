@@ -1,0 +1,48 @@
+.body{
+    margin: 0;
+}
+
+.main {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://media.istockphoto.com/id/1345972841/photo/pizzeria-napoletana-fresh-baking.jpg?s=612x612&w=0&k=20&c=vIqYxaeBVQIVXJdOf-sVdB0NE6V13aZ3pFowmwcu1nw=') center/cover;    height: 100vh;
+    color: white;
+    height: 900px;
+    padding-bottom: 30px;
+}
+
+#title {
+        background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+        border: 3px solid black;
+        border-radius: 20px;
+        color: black;
+        box-shadow:black ;
+        text-shadow: gray;
+        width: 250px;
+        text-align: center;
+
+}
+
+.button-question {
+    width: 60%;
+    height: 90%;
+    background-image: radial-gradient(rgb(168, 75, 75), rgb(122, 48, 48), rgb(107, 14, 14));
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+    border: 3px, solid, black;
+}
+
+h2 {
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+#q1, #q2, #q3 {
+    display: none;
+    margin: 0;
+    width: 60%;
+    text-shadow: 2px 2px 2px red;
+}

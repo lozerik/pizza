@@ -1,0 +1,49 @@
+.body{
+    margin: 0;
+}
+
+
+.main {
+    display: grid;
+    place-items: center;
+    
+    color: white;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://img.freepik.com/fotos-premium/interior-pizzeria-muebles-equipos_960396-510024.jpg?semt=ais_user_personalization&w=740&q=80') center/cover fixed;
+}
+
+#title {
+        background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+        border: 3px solid black;
+        border-radius: 20px;
+        color: black;
+        width: 30%;
+        text-align: center;
+        text-shadow: 2px 2px 2px white;
+
+}
+
+.contact-div {
+    width: 40%;
+    height: 85%;
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    border: 5px solid black;
+}
+
+.contact-div img {
+    height: 200px;
+    width: auto;
+}
+
+p {
+    width: 25%;
+    height: 20%;
+    background: linear-gradient(to right, rgb(128, 1, 1), #c40202);
+    align-content: center;
+    text-align: center;
+    border-radius: 100px;
+    color: rgb(255, 255, 255);
+}

@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.gettyimages.com/id/1670585740/fr/photo/des-amis-trinquent-avec-un-verre-au-bar.jpg?s=612x612&w=0&k=20&c=Awfj7HnQvMDc3ufCZZ_xh5a7OeXwS4UnIWOETS_2h_w=') center/cover fixed;
+}
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.reservaInicio {
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    height: 300px;
+
+}
+
+.pedir {
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+    border: 2px solid black;
+    border-radius: 20px;
+    height: 500px;
+    color: black;
+    width: 400px;    
+    padding: 20px;
+    gap: 10px;
+}
+
+.subColor {
+    background-color : rgb(233, 232, 232);
+    border: 3px solid black;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#title-from {
+    border-radius: 20px;
+    border: 1px sold black;
+    background-color : rgb(233, 232, 232);
+    border: 4px solid black;
+    text-align: center;
+    
+}
+
+.imgReserva1 , .imgReserva2 {
+    border: 3px solid white;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    width: 300px;
+    height: 500px;
+}
+
+
+.imgReserva1:hover, .imgReserva2:hover {
+    transform: rotate(2deg);
+}
+
+#numeroPer {
+background: linear-gradient(to right, rgb(255, 255, 255), rgb(194, 193, 193));
+border: 1px solid black;
+border-radius: 20px;
+height: 20px;
+width: 35px;
+}
+
+.part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.subPart {
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(194, 193, 193));
+}
+
+option {
+    background-color: rgb(210, 209, 209);
+}
+
+#botonReserva {
+    border-radius: 20px;
+    background-color: #07e107;
+    border: 3px solid black;
+    padding: 10px 20px;
+}
+
+
+.div-ayuda {
+    display: flex;
+    margin: 10px;
+}
+
+.nav-div{
+    margin: auto 10px;
+    align-items: center;
+    width: 100%;
+    padding: 25px;
+    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+    color: white;
+}
+
+#reserva {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reserva.css">
+    <script src="reserva.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <span class="logo-text">𐌐𐌉ⱿⱿ𐌄𐌓𐌉𐌀 Ⲋꡕ𐍂</span>
+            <div class="pizza-icon"></div>
+        </div>
+        <nav class="top-nav">
+            <a href="pizza.html" class="active">Menú</a>
+            <span class="separator">|</span>
+            <a href="reserva.html">Reserva</a>
+            <span class="separator">|</span>
+            <a href="contacto.html">Contacto</a>
+            <span class="separator">|</span>
+            <a href="ayuda.html" class="reserva-btn">Ayuda</a>
+        </nav>
+    </header>
+        <section class="reservaInicio">
+            
+            <img src="https://media.gettyimages.com/id/180699232/pt/foto/pizza.jpg?s=612x612&w=0&k=20&c=eWY9du_ahKWTt-xHcfZNQ4TaNsnMcA96ftlQQInAtBE=" class="imgReserva1">
+            <form class="pedir" onsubmit="mostrarMensaje()">
+                <h1 id="title-from">Haz tu reserva</h1>
+                <div class="subColor">
+                <div class="part">
+                    <p>Personas:</p>
+                <input type="number" id="numeroPer" value = 1 max = 6 min= 1>
+                </div>
+                <div class="part">
+                    <p>Hora:</p>
+                <select class="subPart" id="hora">
+                    <option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>20:00</option><option>21:00</option><option>22:00</option>
+                </select>
+                </div>
+                <div class="part">
+                    <p>Fecha:</p>
+                    <input type="date" class="subPart" id="dates">
+                </div>
+                <div class="part">
+                    <p>Email:</p>
+                    <input type="email" class="subPart" id="email">
+                </div>
+                <div class="part">
+                    <button id="botonReserva" type="submit">¡Reservalo!</button>
+                </div>
+                </div>
+
+            </form>  
+            <img src="https://media.gettyimages.com/id/153444470/pt/foto/pizza.jpg?s=612x612&w=0&k=20&c=n2OP-uPL00gPFyUPGGdAT44xd6XZGQA-vhBV9NeuUg0=" class="imgReserva2">
+          
+        </section>
+        </body>
+</html>
