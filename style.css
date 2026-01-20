@@ -1,158 +1,348 @@
-let menuData = {}; 
-let indices = {};  
+* { box-sizing: border-box; }
 
-const btnReserva = document.querySelector('.reserva-btn-main');
-
-setInterval(() => {
-    if(btnReserva) {
-        btnReserva.style.transform = "scale(1.1)";
-        setTimeout(() => btnReserva.style.transform = "scale(1)", 200);
-    }
-}, 3000);
-
-async function cargarMenu() {
-    try {
-        const response = await fetch('datos.json');
-        menuData = await response.json();
-        inicializarSecciones();
-    } catch (error) {
-        console.error("Error cargando el menú:", error);
-    }
-}
-
-function filtrar(categoria) {
-    document.querySelectorAll('.menu-section').forEach(sec => {
-        // Solo muestra la seccion cuyo ID coincide con el boton pulsado
-        sec.style.display = (sec.id === categoria) ? 'block' : 'none';
-    });
-}
-
-function inicializarSecciones() {
-    document.querySelectorAll('.menu-card').forEach(card => {
-        const titulo = card.querySelector('.section-title').innerText.trim();
-        // Crea una clave unica (ej. pizzas_classic) para trackear el indice de cada slider
-        const key = titulo.toLowerCase().replace(/\s+/g, '_');
-        indices[key] = 0;
-
-        card.querySelector('.flecha-btn').onclick = () => cambiarProducto(card, titulo, -1);
-        card.querySelector('.flecha-btn-2').onclick = () => cambiarProducto(card, titulo, 1);
-
-        cambiarProducto(card, titulo, 0);
-    });
-}
-
-function obtenerProductosPorTitulo(titulo) {
-    const sK = titulo.toLowerCase();
-    // Mapeo manual para vincular los titulos del HTML con las rutas del JSON
-    if (sK === "fritos") return menuData.entrantes.fritos;
-    if (sK === "tapas") return menuData.entrantes.tapas;
-    if (sK.includes("classic")) return sK.includes("menú") ? menuData.promociones.clasicas : menuData.pizzas.clasicas;
-    if (sK.includes("deluxe")) return sK.includes("menú") ? menuData.promociones.deluxe : menuData.pizzas.deluxe;
-    if (sK === "refrescos") return menuData.bebidas.refrescos;
-    if (sK === "infusiones") return menuData.bebidas.infusiones;
-    if (sK === "batidos") return menuData.postres.batidos;
-    if (sK === "dulces") return menuData.postres.dulces;
-    return [];
-}
-
-function cambiarProducto(card, tituloSeccion, direccion) {
-    const keyIndex = tituloSeccion.toLowerCase().replace(/\s+/g, '_');
-    const productos = obtenerProductosPorTitulo(tituloSeccion);
-
-    if (!productos.length) return;
-
-    // Actualiza el indice y crea un bucle infinito (del ultimo vuelve al primero)
-    indices[keyIndex] += direccion;
-    if (indices[keyIndex] >= productos.length) indices[keyIndex] = 0;
-    if (indices[keyIndex] < 0) indices[keyIndex] = productos.length - 1;
-
-    const item = productos[indices[keyIndex]];
-    card.querySelector('.p-nombre').innerText = item.nombre;
-    card.querySelector('.p-precio').innerText = item.precio;
-    // Asume que las imagenes son archivos .webp
-    card.querySelector('.p-img').src = item.imagen + ".webp";
+body {
+    margin: 0;
+    font-family: 'Arial Black', sans-serif;
     
-    const desc = card.querySelector('.p-desc');
-    if (desc) {
-        // Muestra ingredientes o cantidad segun lo que este disponible en el JSON
-        desc.innerText = item.ingredientes || item.descripcion || `Cantidad: ${item.unidades || item.cantidad}`;
-    }
+    overflow-x: hidden;
+    color: white
 }
 
-function buscarProducto() {
-    const query = document.getElementById('menuSearch').value.toLowerCase().trim();
-    const res = document.getElementById('searchResults');
+
+.main-header {
+    background : linear-gradient(red, 20%, rgb(112, 1, 1), 70%, red);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-text { 
+    font-size: 2rem; 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.logo-text:hover { transform: scale(1.1); }
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 15px;
+    font-size: 0.9rem;
+}
+
+
+.hero-banner {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80') center/cover;
+    height: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    margin: 0;
+    text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
+}
+
+.hero-subtitle {
+    margin: 0;
+    text-shadow: 3px 3px 10px rgba(234, 43, 29, 0.8);
     
-    if (query.length < 2) { 
-        res.style.display = 'none'; 
-        return; 
-    }
-
-    let html = "";
-    // Triple bucle para rastrear: Categoria -> Subcategoria -> Producto
-    for (let cat in menuData) {
-        for (let sub in menuData[cat]) {
-            menuData[cat][sub].forEach(p => {
-                if (p.nombre.toLowerCase().includes(query)) {
-                    let nombreSubCard = traducirSub(sub, cat);
-                    // Al hacer click, envia categoria, subcategoria y nombre exacto
-                    html += `<div class="search-item" onclick="seleccionarExacto('${cat}', '${nombreSubCard}', '${p.nombre}')">
-                        <strong>${p.nombre}</strong> <br><small>${cat} > ${nombreSubCard}</small>
-                    </div>`;
-                }
-            });
-        }
-    }
-    res.innerHTML = html || '<div class="search-item">Sin resultados</div>';
-    res.style.display = 'block';
 }
 
-function traducirSub(sub, cat) {
-    // Convierte terminos del JSON a los nombres reales de las etiquetas h2 del HTML
-    const mapa = {
-        "fritos": "Fritos", 
-        "tapas": "Tapas", 
-        "refrescos": "Refrescos", 
-        "infusiones": "Infusiones", 
-        "batidos": "Batidos", 
-        "dulces": "Dulces",
-        "clasicas": (cat === "pizzas") ? "Pizzas Classic" : "Menús Pizzas Classic",
-        "deluxe": (cat === "pizzas") ? "Pizzas Deluxe" : "Menús Pizzas Deluxe"
-    };
-    return mapa[sub] || sub;
+.category-bar {
+    background: linear-gradient(#01500ef9, 30%, #02a83f, 70%, #01540ff9);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-function seleccionarExacto(idSeccion, tituloCard, nombreProd) {
-    filtrar(idSeccion);
+.cat-btn {
+    background: linear-gradient(90deg, #fffffff9, #b8b8b8);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cat-btn:hover {
+    background: linear-gradient(90deg, #848383f9, #030303);    color: white;
+}
+
+.search-container {
+    position: relative;
+    margin-left: 20px;
+}
+
+#menuSearch {
+    margin-left: 20px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+    outline: none;
+    width: 220px;
+    background: linear-gradient(90deg, #fffffff9, #cac9c9);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, #fffffff9, #b8b8b8);
+    border-radius: 10px;
+    margin-top: 5px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 2000;
+    box-shadow: 5px 5px 5px rgb(91, 91, 91);
+    display: none;
+}
+
+.search-item {
+    padding: 10px;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+}
+
+.search-item:hover { background-color: #f0f0f0; color: red; }
+
+
+
+.inicio-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: left;
+}
+
+
+.inicio-container-reverse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px 20px;
+    text-align: right; 
+}
+
+#Inicio {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/514467132/es/foto/tradicional-de-horno.jpg?b=1&s=612x612&w=0&k=20&c=-D-4MZ0pzN_WO8DLQXfdxMw4J2d1aykg1Y4lxZSXtPY=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#promociones {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/1441253725/es/foto/el-chef-pone-la-margherita-cuatro-quesos-o-pizza-de-carne-en-una-pala-en-el-horno-un-horno-de.jpg?s=612x612&w=0&k=20&c=Gu2c0GvHNUelNwPW581ZFfiSDPE7se1qCsAo18QB2sg=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#pizzas {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://img.freepik.com/premium-photo/delicious-pepperoni-pizza-dark-background-sausage-pizza-italian-pepperoni-pizza-pizzeria_79782-5023.jpg?semt=ais_hybrid&w=740&q=80') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#entrantes {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://www.periodistadigital.com/wp-content/uploads/2010/11/nuggets-intro.jpg') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#bebidas {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://media.istockphoto.com/id/157636846/es/foto/fizz.jpg?s=612x612&w=0&k=20&c=QfZwok1E3dKDlmG1ZzWuSlqFfyIXVlLmTyCBT9ri03c=') center/cover fixed;
+    margin-bottom: 0;
+}
+
+#postres {
+display: block; 
+    padding: 60px 30px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://static.vecteezy.com/system/resources/thumbnails/070/283/854/small/a-white-plate-with-a-bunch-of-different-desserts-photo.jpg') center/cover fixed;
+    margin-bottom: 0;
+}
+
+.inicio-texto {
+    flex: 1;
+}
+
+.inicio-imagenD {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.imgInicioD, .imgInicioI  {
+    border: 5px solid white;
+    box-shadow: 2px 2px 10px black;
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.imgInicioD:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.imgInicioI:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+
+.container-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.menu-card {
+    flex: 1;
+    min-width: 350px;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reserva-btn-main {
+    display: inline-block;
+    background-color: #1eb120;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: bold;
+    border: 2px solid white;
+    transition: 0.3s;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.menu-section {
+    padding: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+#Inicio { display: block; }
+
+
+.pizza-image img, .bebida-image img, .entrante-image img, .postre-image img {
+    max-width: 100%; 
+    height: 250px;
+    width: 350px;
+    border: 5px solid white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+    transition: transform 0.3s ease;
+}
+
+.pizza-image img:hover, .bebida-image img:hover, .entrante-image img:hover, .postre-image img:hover {
+    transform: rotate(5deg);
+}
+
+
+.flecha-btn, .flecha-btn-2 {
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #000;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.flecha-btn { background: linear-gradient(90deg, #ff0202f9, #7d0303); }
+.flecha-btn-2 { background: linear-gradient(90deg, #37d70b, #034804); }
+
+.flecha-btn:hover { transform: scale(1.1); background: linear-gradient(90deg, #d75050f9, #ff0000); }
+.flecha-btn-2:hover { transform: scale(1.1); background: linear-gradient(90deg, #4dd727, #048a06); }
+
+
+.info-box {
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+    border-radius: 20px;
+    border: 10px solid rgb(13, 13, 13);
+    padding: 20px;
+    color: #000;
+    width: 590px;
+    height: 500px;
+}
+
+.section-title {
+    background: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+    border-radius: 20px;
+    border: 6px solid #000000;
+    color: #000;
+    padding: 10px 20px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .inicio-container, .inicio-container-reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
     
-    const cards = document.querySelectorAll(`#${idSeccion} .menu-card`);
-    cards.forEach(card => {
-        const h2 = card.querySelector('.section-title').innerText.trim();
-        // Solo actua sobre la tarjeta que contiene el producto buscado
-        if (h2 === tituloCard) {
-            const productos = obtenerProductosPorTitulo(tituloCard);
-            const index = productos.findIndex(p => p.nombre === nombreProd);
-            
-            if (index !== -1) {
-                const key = tituloCard.toLowerCase().replace(/\s+/g, '_');
-                // Sincroniza el slider para que muestre el producto encontrado
-                indices[key] = index; 
-                cambiarProducto(card, tituloCard, 0); 
-                // Centra la pantalla en el producto encontrado
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-    });
-
-    document.getElementById('searchResults').style.display = 'none';
-    document.getElementById('menuSearch').value = '';
-}
-
-document.addEventListener('click', (e) => {
-    const container = document.querySelector('.search-container');
-    if (container && !container.contains(e.target)) {
-        document.getElementById('searchResults').style.display = 'none';
+    .inicio-container-reverse {
+        flex-direction: column-reverse; 
     }
-});
-
-document.addEventListener("DOMContentLoaded", cargarMenu);
+}
