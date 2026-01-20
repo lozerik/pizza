@@ -1,5 +1,26 @@
 * { box-sizing: border-box; }
 
+/*Fuentes*/
+@font-face {
+  font-family: 'rice';
+  src: url('fuentes/RiceBall.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'title';
+  src: url('fuentes/HangedLetters.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'seagram';
+  src: url('fuentes/Seagram.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'sevesbrg';
+  src: url('fuentes/sevesbrg.ttf') format('truetype');
+}
+
 body {
     margin: 0;
     font-family: 'Arial Black', sans-serif;
@@ -24,6 +45,7 @@ body {
     font-size: 2rem; 
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    font-family: 'title';
 }
 
 .logo-text:hover { transform: scale(1.1); }
@@ -34,6 +56,7 @@ body {
     text-transform: uppercase;
     margin: 0 15px;
     font-size: 0.9rem;
+    font-family: 'seagram';
 }
 
 
@@ -51,6 +74,7 @@ body {
     font-size: clamp(2rem, 8vw, 4.5rem);
     margin: 0;
     text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
+    font-family: 'sevesbrg';
 }
 
 .hero-subtitle {
@@ -332,6 +356,7 @@ display: block;
     padding: 10px 20px;
     width: 100%;
     margin-bottom: 15px;
+    font-family: 'rice';
 }
 
 
