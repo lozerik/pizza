@@ -10,218 +10,237 @@
 
     <header class="main-header">
         <div class="logo">
-            <a href="pizza.html" class="logo-text">𐌐𐌉ⱿⱿ𐌄𐌓𐌉𐌀 Ⲋꡕ𐍂</a>
-            <div class="pizza-icon"></div>
+            <span class="logo-text">𐌐𐌉ⱿⱿ𐌄𐌓𐌉𐌀 Ⲋꡕ𐍂</span>
         </div>
         <nav class="top-nav">
-            <a href="pizza.html" class="active">𝕄𝕖𝕟𝕦</a>
+            <a href="pizza.html" class="active">Menú</a>
             <span class="separator">|</span>
-            <a href="reserva.html">ℝ𝕖𝕤𝕖𝕣𝕧𝕒</a>
+            <a onclick="filtrar('promociones')">Reserva</a>
             <span class="separator">|</span>
-            <a href="contacto.html">ℂ𝕠𝕟𝕥𝕒𝕔𝕥𝕠</a>
+            <a href="contacto.html">Contacto</a>
             <span class="separator">|</span>
-            <a href="ayuda.html" class="reserva-btn">𝔸𝕪𝕦𝕕𝕒</a>
+            <a href="ayuda.html" class="reserva-btn">Ayuda</a>
         </nav>
     </header>
 
     <section class="hero-banner">
         <div class="hero-content">
             <h1 class="hero-title">FEEL THE PIZZA VIBES</h1>
-            <p class="hero-subtitle">CHIGGA / YEAH</p>
-            <a href="reserva.html" class="reserva-btn-main">¡RÉSERVÁLO YA!</a>
+            <p class="hero-subtitle">CHIGGA</p>
+            <a class="reserva-btn-main" onclick="filtrar('promociones')">¡RÉSERVÁLO YA!</a>
         </div>
     </section>
 
     <nav class="category-bar">
-        <button class="cat-btn" onclick="filtrar('Inicio')">𝕴𝖓𝖎𝖈𝖎𝖔</button>
-        <button class="cat-btn" onclick="filtrar('promociones')">𝔓𝖗𝖔𝖒𝖔𝖈𝖎𝖔𝖓𝖊𝖘</button>
-        <button class="cat-btn" onclick="filtrar('pizzas')">𝕻𝖎𝖟𝖟𝖆𝖘</button>
-        <button class="cat-btn" onclick="filtrar('entrantes')">𝔈𝖓𝖙𝖗𝖆𝖓𝖙𝖊𝖘</button>
-        <button class="cat-btn" onclick="filtrar('bebidas')">𝔅𝖊𝖇𝖎𝖉𝖆𝖘</button>
-        <button class="cat-btn" onclick="filtrar('postres')">𝔓𝖔𝖘𝖙𝖗𝖊𝖘</button>
+        <button class="cat-btn" onclick="filtrar('Inicio')">Inicio</button>
+        <button class="cat-btn" onclick="filtrar('promociones')">Promociones</button>
+        <button class="cat-btn" onclick="filtrar('pizzas')">Pizzas</button>
+        <button class="cat-btn" onclick="filtrar('entrantes')">Entrantes</button>
+        <button class="cat-btn" onclick="filtrar('bebidas')">Bebidas</button>
+        <button class="cat-btn" onclick="filtrar('postres')">Postres</button>
+        
         <div class="search-container">
-            <input type="text" placeholder="Buscar...">
-            <button>🔍</button>
+            <input type="text" id="menuSearch" placeholder="Buscar producto...🔍" oninput="buscarProducto()">
+            <div id="searchResults" class="search-results"></div>
         </div>
     </nav>
 
-    <main class="menu-container">
-        
-        <section id="Inicio" class="menu-section">
-            <h2 class="hero-title">Bienvenidos a Pizzeria Sur</h2>
-            <p style="color: white; text-align: center;">Selecciona una categoría para ver nuestras delicias.</p>
-            
-            <div class="about-us" style="margin-top: 40px; text-align: center;">
-                <h2 class="hero-title">Conócenos</h2>
-                <h3 class="hero-subtitle">Velocidad y satisfacción para llevar Italia a tu casa</h3>
-                <p style="color: white; max-width: 800px; margin: 0 auto;">
-                    Somos una empresa principalmente centrada en la eficiencia de nuestros envíos hasta el punto de que somos la primera empresa centrada únicamente en el delivery y en las reservas. Recibirás nuestra pizza en pocos minutos recién cocinada.
-                </p>
-            </div>
-        </section>
+    <section id="Inicio" class="menu-section">
+    <div class="inicio-container">
+        <div class="inicio-texto">
+            <h2 class="hero-title">¿Quienes somos?</h2>
+            <p class="hero-subtitle">Somos una Pizzeria a las afueras de la ciudad de Madrid, nosotros somos una familia que nos dedicamos a las pizzas desde hace más de 50 años, tenemos recetas que no te podrás ni imaginar.</p>
+        </div>
+        <div class="inicio-imagen">
+            <img src="https://amasable.com/wp-content/uploads/2019/12/Pizza-al-horno-de-len%CC%83a-con-fuego-780x470.jpg" class="imgInicioD">
+        </div>
+    </div>
 
-        <section id="promociones" class="menu-section">
-            <div class="container-grid">
-                <div class="menu-card">
-                    <h2 class="section-title">Menús Pizzas Classic</h2>
-                    <div class="slider-container info-box red-box">
-                        <button class="flecha-btn arrow">⬅</button>
-                        <div class="card-content">
-                            <h3 class="p-nombre">Menú Pizza Samuel's</h3>
-                            <p class="p-desc">Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
-                            <p class="price">Precio: <span class="p-precio">13,99</span> $</p>
-                            <div class="pizza-image">
-                                <img src="Imagenes/Menús/imgMenu1.webp" class="p-img" onerror="this.src='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.ocu.org%2F-%2Fmedia%2Focu%2Fimages%2Fhome%2Falimentacion%2Falimentos%2Fpizzas_selector_1600x900.jpg'">
-                            </div>
-                        </div>
-                        <button class="flecha-btn-2 arrow">➡</button>
-                    </div>
-                </div>
+    <div class="inicio-container-reverse">
+        <div class="inicio-imagen">
+            <img src="https://us.123rf.com/450wm/gorodenkoff/gorodenkoff2305/gorodenkoff230500128/204280589-en-el-restaurante-chef-profesional-preparando-pizza-amasando-masa-a%C3%B1adiendo-ingredientes-queso.jpg?ver=6" class="imgInicioI">
+        </div>
+        <div class="inicio-texto">
+            <h2 class="hero-title">Nuestra Tradición</h2>
+            <p class="hero-subtitle">Nuestra masa se fermenta durante 48 horas para asegurar una textura ligera y crujiente. Utilizamos ingredientes locales de la más alta calidad para que cada bocado sea una experiencia única.</p>
+        </div>
+    </div>
 
-                <div class="menu-card">
-                    <h2 class="section-title">Menús Pizzas Deluxe</h2>
-                    <div class="slider-container info-box white-box">
-                        <button class="flecha-btn arrow">⬅</button>
-                        <div class="card-content">
-                            <h3 class="p-nombre">Menú Pizza Ramon's</h3>
-                            <p class="p-desc">Cheddar, Vacuno, Pepperoni, Maíz</p>
-                            <p class="vegan-tag">Vegano</p>
-                            <p class="price">Precio: <span class="p-precio">12,99</span> $</p>
-                            <div class="pizza-image">
-                                <img src="Imagenes/Menús/imgMenu8.webp" class="p-img" onerror="this.src='https://cdn.joinnus.com/wp-content/uploads/2023/02/09154055/pizzas-raras.jpg'">
-                            </div>
-                        </div>
-                        <button class="flecha-btn-2 arrow">➡</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <div class="inicio-container">
+        <div class="inicio-texto">
+            <h2 class="hero-title">Ayudamos al planeta</h2>
+            <p class="hero-subtitle">Nuestra pizzería cuida el planeta eliminando el uso de plásticos de un solo uso en todos nuestros envíos. Utilizamos cajas de cartón 100% reciclado y compostable, asegurando que el sabor de Italia no deje una huella negativa en la Tierra.</p>
+        </div>
+        <div class="inicio-imagen">
+            <img src="https://media.istockphoto.com/id/867487552/photo/close-up-of-tasty-pizzas-with-variety-of-toppings-and-cheese-in-cardboard-take-out-boxes.jpg?s=612x612&w=0&k=20&c=9SDlnxFaLt9rcIosHT1dk2oYPmAA21OqTfwujo0AxSk=" class="imgInicioD">
+        </div>
+    </div>
 
-        <section id="pizzas" class="menu-section">
-            <div class="container-grid">
-                <div class="menu-card">
-                    <h2 class="section-title">Pizzas Classic</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Pizza Samuel's</h3>
-                            <p class="p-desc">Mozzarella, jamón, barbacoa, cebolla caramelizada</p>
-                            <p class="price">Precio: <span class="p-precio">9,5</span> $</p>
-                            <div class="pizza-image"><img src="Imagenes/Pizzas/imgPizza1.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
+    <div class="inicio-container-reverse">
+        <div class="inicio-imagen">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/022/191/379/small/empty-wooden-table-in-front-of-golden-ears-of-wheat-background-generative-ai-free-photo.jpg" class="imgInicioI">
+        </div>
+        <div class="inicio-texto">
+            <h2 class="hero-title">Confian en nosotros</h2>
+            <p class="hero-subtitle">Apoyamos a los agricultores locales de Madrid comprando ingredientes de temporada. Esto reduce las emisiones de carbono por transporte y garantiza productos frescos, naturales y sin pesticidas para nuestras recetas tradicionales.</p>
+        </div>
+    </div>
+</section>
+
+    <section id="promociones" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Menús Pizzas Classic</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
                     </div>
-                </div>
-                <div class="menu-card">
-                    <h2 class="section-title">Pizzas Deluxe</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Pizza Ramon's</h3>
-                            <p class="p-desc">Cheddar, Vacuno, Pepperoni, Maíz</p>
-                            <p class="price">Precio: <span class="p-precio">8,5</span> $</p>
-                            <div class="pizza-image"><img src="Imagenes/Pizzas/imgPizza7.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
-                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-        </section>
-
-        <section id="entrantes" class="menu-section">
-            <div class="container-grid">
-                <div class="menu-card">
-                    <h2 class="section-title">Fritos</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Nuggets</h3>
-                            <p class="p-desc">5 unidades. Nuggets de pollo fritos</p>
-                            <p class="price">Precio: <span class="p-precio">2,5</span> $</p>
-                            <div class="entrante-image"><img src="Imagenes/Entrantes/imgEntrante1.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
+            <div class="menu-card">
+                <h2 class="section-title">Menús Pizzas Deluxe</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
                     </div>
-                </div>
-                <div class="menu-card">
-                    <h2 class="section-title">Tapas</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Gildas</h3>
-                            <p class="p-desc">5 unidades. Gildas con boquerones en vinagre</p>
-                            <p class="price">Precio: <span class="p-precio">2,5</span> $</p>
-                            <div class="entrante-image"><img src="Imagenes/Entrantes/imgEntrante4.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
-                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="bebidas" class="menu-section">
-            <div class="container-grid">
-                <div class="menu-card">
-                    <h2 class="section-title">Refrescos</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Coca Cola</h3>
-                            <p class="p-desc">330ml. Original, Zero, Zero Zero</p>
-                            <p class="price">Precio: <span class="p-precio">2</span> $</p>
-                            <div class="bebida-image"><img src="Imagenes/Bebidas/imgBebida1.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
+    <section id="pizzas" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Pizzas Classic</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
                     </div>
-                </div>
-                <div class="menu-card">
-                    <h2 class="section-title">Infusiones</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Té Verde</h3>
-                            <p class="p-desc">250ml. Té verde con un toque de menta</p>
-                            <p class="price">Precio: <span class="p-precio">1,5</span> $</p>
-                            <div class="bebida-image"><img src="Imagenes/Bebidas/imgBebida5.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
-                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-        </section>
-
-        <section id="postres" class="menu-section">
-            <div class="container-grid">
-                <div class="menu-card">
-                    <h2 class="section-title">Batidos</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">OreoShake</h3>
-                            <p class="p-desc">400ml. Leche, sirope y oreos</p>
-                            <p class="price">Precio: <span class="p-precio">3,5</span> $</p>
-                            <div class="postre-image"><img src="Imagenes/Postres/imgBebida4.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
+            <div class="menu-card">
+                <h2 class="section-title">Pizzas Deluxe</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="pizza-image"><img src="" class="p-img"></div>
                     </div>
-                </div>
-                <div class="menu-card">
-                    <h2 class="section-title">Dulces</h2>
-                    <div class="slider-container">
-                        <button class="flecha-btn">⬅</button>
-                        <div class="info-box">
-                            <h3 class="p-nombre">Tiramisu</h3>
-                            <p class="p-desc">1 ración. Bizcocho de café</p>
-                            <p class="price">Precio: <span class="p-precio">3</span> $</p>
-                            <div class="postre-image"><img src="Imagenes/Postres/imgPostre1.webp" class="p-img"></div>
-                        </div>
-                        <button class="flecha-btn-2">➡</button>
-                    </div>
+                    <button class="flecha-btn-2">➡</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section id="bebidas" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Refrescos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="bebida-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+            <div class="menu-card">
+                <h2 class="section-title">Infusiones</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="bebida-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entrantes" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Fritos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="entrante-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+            <div class="menu-card">
+                <h2 class="section-title">Tapas</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="entrante-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="postres" class="menu-section">
+        <div class="container-grid">
+            <div class="menu-card">
+                <h2 class="section-title">Batidos</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="postre-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+            <div class="menu-card">
+                <h2 class="section-title">Dulces</h2>
+                <div class="slider-container">
+                    <button class="flecha-btn">⬅</button>
+                    <div class="info-box">
+                        <h3 class="p-nombre"></h3>
+                        <p class="p-desc"></p>
+                        <p class="price">Precio: <span class="p-precio"></span> $</p>
+                        <div class="postre-image"><img src="" class="p-img"></div>
+                    </div>
+                    <button class="flecha-btn-2">➡</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
