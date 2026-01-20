@@ -1,336 +1,158 @@
-/* =========================================
-   1. VARIABLES Y FUENTES PERSONALIZADAS
-   ========================================= */
-:root {
-    --primary-red: #e72f2b;
-    --primary-green: #1c461f;
-    --accent-green: #2ecc71;
-    --btn-hover: #1b7a06;
-    --white: #ffffff;
-    --shadow: 0 10px 20px rgba(0,0,0,0.5);
-    /* Degradado temático italiano usado en cajas y títulos */
-    --italy-gradient: linear-gradient(to right, red, 20%, #f6f9f6, #057b05);
+let menuData = {}; 
+let indices = {};  
+
+const btnReserva = document.querySelector('.reserva-btn-main');
+
+setInterval(() => {
+    if(btnReserva) {
+        btnReserva.style.transform = "scale(1.1)";
+        setTimeout(() => btnReserva.style.transform = "scale(1)", 200);
+    }
+}, 3000);
+
+async function cargarMenu() {
+    try {
+        const response = await fetch('datos.json');
+        menuData = await response.json();
+        inicializarSecciones();
+    } catch (error) {
+        console.error("Error cargando el menú:", error);
+    }
 }
 
-@font-face {
-    font-family: 'rice';
-    src: url('fuentes/RiceBall.otf') format('truetype');
+function filtrar(categoria) {
+    document.querySelectorAll('.menu-section').forEach(sec => {
+        // Solo muestra la seccion cuyo ID coincide con el boton pulsado
+        sec.style.display = (sec.id === categoria) ? 'block' : 'none';
+    });
 }
 
-@font-face {
-    font-family: 'title';
-    src: url('fuentes/HangedLetters.ttf') format('truetype');
+function inicializarSecciones() {
+    document.querySelectorAll('.menu-card').forEach(card => {
+        const titulo = card.querySelector('.section-title').innerText.trim();
+        // Crea una clave unica (ej. pizzas_classic) para trackear el indice de cada slider
+        const key = titulo.toLowerCase().replace(/\s+/g, '_');
+        indices[key] = 0;
+
+        card.querySelector('.flecha-btn').onclick = () => cambiarProducto(card, titulo, -1);
+        card.querySelector('.flecha-btn-2').onclick = () => cambiarProducto(card, titulo, 1);
+
+        cambiarProducto(card, titulo, 0);
+    });
 }
 
-@font-face {
-    font-family: 'seagram';
-    src: url('fuentes/Seagram.ttf') format('truetype');
+function obtenerProductosPorTitulo(titulo) {
+    const sK = titulo.toLowerCase();
+    // Mapeo manual para vincular los titulos del HTML con las rutas del JSON
+    if (sK === "fritos") return menuData.entrantes.fritos;
+    if (sK === "tapas") return menuData.entrantes.tapas;
+    if (sK.includes("classic")) return sK.includes("menú") ? menuData.promociones.clasicas : menuData.pizzas.clasicas;
+    if (sK.includes("deluxe")) return sK.includes("menú") ? menuData.promociones.deluxe : menuData.pizzas.deluxe;
+    if (sK === "refrescos") return menuData.bebidas.refrescos;
+    if (sK === "infusiones") return menuData.bebidas.infusiones;
+    if (sK === "batidos") return menuData.postres.batidos;
+    if (sK === "dulces") return menuData.postres.dulces;
+    return [];
 }
 
-@font-face {
-    font-family: 'sevesbrg';
-    src: url('fuentes/sevesbrg.ttf') format('truetype');
+function cambiarProducto(card, tituloSeccion, direccion) {
+    const keyIndex = tituloSeccion.toLowerCase().replace(/\s+/g, '_');
+    const productos = obtenerProductosPorTitulo(tituloSeccion);
+
+    if (!productos.length) return;
+
+    // Actualiza el indice y crea un bucle infinito (del ultimo vuelve al primero)
+    indices[keyIndex] += direccion;
+    if (indices[keyIndex] >= productos.length) indices[keyIndex] = 0;
+    if (indices[keyIndex] < 0) indices[keyIndex] = productos.length - 1;
+
+    const item = productos[indices[keyIndex]];
+    card.querySelector('.p-nombre').innerText = item.nombre;
+    card.querySelector('.p-precio').innerText = item.precio;
+    // Asume que las imagenes son archivos .webp
+    card.querySelector('.p-img').src = item.imagen + ".webp";
+    
+    const desc = card.querySelector('.p-desc');
+    if (desc) {
+        // Muestra ingredientes o cantidad segun lo que este disponible en el JSON
+        desc.innerText = item.ingredientes || item.descripcion || `Cantidad: ${item.unidades || item.cantidad}`;
+    }
 }
 
-/* =========================================
-   2. RESET Y ESTILOS BASE
-   ========================================= */
-* { box-sizing: border-box; }
+function buscarProducto() {
+    const query = document.getElementById('menuSearch').value.toLowerCase().trim();
+    const res = document.getElementById('searchResults');
+    
+    if (query.length < 2) { 
+        res.style.display = 'none'; 
+        return; 
+    }
 
-body {
-    margin: 0;
-    font-family: 'Arial Black', sans-serif;
-    background-color: var(--primary-green);
-    overflow-x: hidden;
-    color: var(--white);
+    let html = "";
+    // Triple bucle para rastrear: Categoria -> Subcategoria -> Producto
+    for (let cat in menuData) {
+        for (let sub in menuData[cat]) {
+            menuData[cat][sub].forEach(p => {
+                if (p.nombre.toLowerCase().includes(query)) {
+                    let nombreSubCard = traducirSub(sub, cat);
+                    // Al hacer click, envia categoria, subcategoria y nombre exacto
+                    html += `<div class="search-item" onclick="seleccionarExacto('${cat}', '${nombreSubCard}', '${p.nombre}')">
+                        <strong>${p.nombre}</strong> <br><small>${cat} > ${nombreSubCard}</small>
+                    </div>`;
+                }
+            });
+        }
+    }
+    res.innerHTML = html || '<div class="search-item">Sin resultados</div>';
+    res.style.display = 'block';
 }
 
-/* =========================================
-   3. HEADER Y NAVEGACIÓN SUPERIOR
-   ========================================= */
-.main-header {
-    background-color: var(--primary-red);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    color: white;
+function traducirSub(sub, cat) {
+    // Convierte terminos del JSON a los nombres reales de las etiquetas h2 del HTML
+    const mapa = {
+        "fritos": "Fritos", 
+        "tapas": "Tapas", 
+        "refrescos": "Refrescos", 
+        "infusiones": "Infusiones", 
+        "batidos": "Batidos", 
+        "dulces": "Dulces",
+        "clasicas": (cat === "pizzas") ? "Pizzas Classic" : "Menús Pizzas Classic",
+        "deluxe": (cat === "pizzas") ? "Pizzas Deluxe" : "Menús Pizzas Deluxe"
+    };
+    return mapa[sub] || sub;
 }
 
-.logo-text { 
-    font-size: 2rem; 
-    font-weight: bold;
-    font-family: 'title'; /* Fuente del bloque 2 */
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
+function seleccionarExacto(idSeccion, tituloCard, nombreProd) {
+    filtrar(idSeccion);
+    
+    const cards = document.querySelectorAll(`#${idSeccion} .menu-card`);
+    cards.forEach(card => {
+        const h2 = card.querySelector('.section-title').innerText.trim();
+        // Solo actua sobre la tarjeta que contiene el producto buscado
+        if (h2 === tituloCard) {
+            const productos = obtenerProductosPorTitulo(tituloCard);
+            const index = productos.findIndex(p => p.nombre === nombreProd);
+            
+            if (index !== -1) {
+                const key = tituloCard.toLowerCase().replace(/\s+/g, '_');
+                // Sincroniza el slider para que muestre el producto encontrado
+                indices[key] = index; 
+                cambiarProducto(card, tituloCard, 0); 
+                // Centra la pantalla en el producto encontrado
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('menuSearch').value = '';
 }
 
-.logo-text:hover { transform: scale(1.1); }
+document.addEventListener('click', (e) => {
+    const container = document.querySelector('.search-container');
+    if (container && !container.contains(e.target)) {
+        document.getElementById('searchResults').style.display = 'none';
+    }
+});
 
-.top-nav a {
-    color: var(--white);
-    text-decoration: none;
-    text-transform: uppercase;
-    margin: 0 15px;
-    font-size: 0.9rem;
-    font-family: 'seagram'; /* Fuente del bloque 2 */
-}
-
-.separator { margin: 0 5px; }
-
-/* =========================================
-   4. HERO BANNER
-   ========================================= */
-.hero-banner {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1500&q=80') center/cover;
-    height: 900px; /* Altura premium del bloque 2 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-bottom: 5px solid var(--primary-red);
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    margin: 0;
-    text-shadow: 3px 3px 10px rgba(49, 218, 27, 0.8);
-    font-family: 'sevesbrg'; /* Fuente del bloque 2 */
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 2px red;
-    margin-top: 10px;
-}
-
-.reserva-btn-main {
-    display: inline-block;
-    background-color: #1eb120;
-    color: white;
-    padding: 12px 35px;
-    border-radius: 50px;
-    text-decoration: none;
-    margin-top: 20px;
-    font-weight: bold;
-    border: 2px solid white;
-    transition: 0.3s;
-}
-
-.reserva-btn-main:hover { transform: scale(1.05); background-color: #1b7a06; }
-
-/* =========================================
-   5. BARRA DE CATEGORÍAS
-   ========================================= */
-.category-bar {
-    background-color: var(--accent-green);
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.cat-btn {
-    background: var(--white);
-    color: var(--primary-red);
-    border: none;
-    padding: 8px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.cat-btn:hover {
-    background-color: var(--btn-hover) !important;
-    color: var(--white) !important;
-    transform: scale(1.1);
-}
-
-/* =========================================
-   6. SECCIONES DEL MENÚ Y CONTENEDORES
-   ========================================= */
-.menu-container {
-    padding: 20px 0;
-    background-image: linear-gradient(to right, rgb(5, 12, 1), rgb(24, 109, 7), black);
-}
-
-.menu-section {
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    text-align: center;
-    display: none; /* Controlado por JS */
-}
-
-#Inicio { display: block; }
-
-.container-grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 20px;
-}
-
-.menu-card {
-    flex: 1;
-    min-width: 350px;
-    max-width: 650px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* =========================================
-   7. CAJAS DE INFORMACIÓN Y TARJETAS
-   ========================================= */
-.info-box {
-    background: var(--italy-gradient);
-    border-radius: 20px;
-    border: 10px solid rgb(13, 13, 13);
-    padding: 20px;
-    color: #000;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    flex: 1;
-    height: 100%;
-}
-
-.section-title {
-    background: var(--italy-gradient);
-    border-radius: 20px;
-    border: 6px solid #000000;
-    color: #000;
-    padding: 10px 20px;
-    width: 100%;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-family: 'rice'; /* Fuente del bloque 2 */
-}
-
-/* Clases específicas de colores para secciones */
-.classic { background-color: #1b7a06; color: white; }
-.deluxe { background-color: #ae1512; color: white; }
-
-#info {
-    background-color: #b8fb91;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px auto;
-    max-width: 80%;
-    color: #000;
-}
-
-.sub-seccion {
-    display: inline-block;
-    vertical-align: top;
-    width: 45%; 
-    margin: 10px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    border: 1px dashed white;
-}
-
-/* =========================================
-   8. IMÁGENES Y EFECTOS
-   ========================================= */
-.pizza-image img, .bebida-image img, 
-.entrante-image img, .postre-image img, .p-img {
-    max-width: 100%; 
-    height: 250px;
-    width: 350px;
-    border: 5px solid var(--white);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: transform 0.5s ease-in-out; 
-    backface-visibility: hidden;
-}
-
-.pizza-image img:hover, .bebida-image img:hover, 
-.entrante-image img:hover, .postre-image img:hover, .p-img:hover {
-    transform: rotate(5deg);
-}
-
-/* =========================================
-   9. SLIDERS Y FLECHAS (NAVEGACIÓN)
-   ========================================= */
-.slider-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 15px;
-}
-
-/* Botones por Clase (Bloque 1) */
-.flecha-btn {
-    color: #000;
-    background: linear-gradient(90deg, #ff0202f9, #7d0303);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #000;
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.2s;
-}
-
-.flecha-btn-2 {
-    color: #000;
-    background: linear-gradient(90deg, #37d70b, #034804);
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #000;
-    width: 50px;
-    height: 50px;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.2s;
-}
-
-.flecha-btn:hover, .flecha-btn-2:hover {
-    transform: scale(1.2);
-}
-
-/* Botones por ID (Bloque 2) */
-#flechaIzq, #flechaDer {
-    color: #000000;
-    background-color: #e66a6a;  
-    border-radius: 30px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    border: 2px solid rgb(0, 0, 0);
-    width: 50px;
-    height: 50px;
-    font-size: 30px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#flechaIzq:hover, #flechaDer:hover { transform: scale(1.2); }
-
-/* =========================================
-   10. UTILIDADES
-   ========================================= */
-.separador { margin-top: 200px; }
-.price { font-weight: bold; font-size: 1.2rem; }
-.vegan-tag { color: green; font-weight: bold; }
+document.addEventListener("DOMContentLoaded", cargarMenu);
