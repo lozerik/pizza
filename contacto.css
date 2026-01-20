@@ -1,5 +1,10 @@
 .body{
+    overscroll-behavior:none;
     margin: 0;
+    display: flow-root;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+    url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Finfoempleonews.com%2Fwp-content%2Fuploads%2F2020%2F01%2Fcontacto.jpg&f=1&nofb=1&ipt=affa2438ca59e7757a317a2554fb30b0373796c2b56edd7eb0eb9bd89c27a27e') center/cover;
+    overflow: hidden;
 }
 
 img {
@@ -8,17 +13,18 @@ img {
 }
 
 .main {
-    display: grid;
+    display:flex;   
     place-items: center;
-    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
     height: 100vh;
-    color: white;
+    overflow-x:hidden;
+    overscroll-behavior:none;
+    
 }
 
 .contact-div {
     width: 80%;
     height: 90%;
-    background-color: darkgrey;
+    background-color: rgba(169, 169, 169, 0);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -27,10 +33,10 @@ img {
 p {
     width: 50%;
     height: 50%;
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0);
     align-content: center;
     text-align: center;
     border-radius: 100px;
-    color: black;
-    text-shadow: 3px -3px 0 #ffffff, -3px 3px 0 white;
+    color: rgb(255, 255, 255);
+    text-shadow:  3px 3px 3px rgba(0, 0, 0, 0.8);
 }
