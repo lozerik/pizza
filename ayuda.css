@@ -6,15 +6,16 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    background-image: linear-gradient(to right,rgb(5, 12, 1),rgb(24, 109, 7), Black);
+    background-image: radial-gradient(white, yellow ,rgb(252, 6, 6), rgb(64, 7, 234), rgb(23, 1, 32));
     height: 100vh;
     color: white;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.europapress.es%2Ffotoweb%2Ffotonoticia_20230331165954_1200.jpg&f=1&nofb=1&ipt=7b29ffede4e90c2dba25c6150def36647a5dbbbd17ad6a2194e5a13d74262f4e');
 }
 
 .button-question {
     width: 60%;
     height: 90%;
-    background-image: radial-gradient(rgb(113, 113, 113), rgb(129, 129, 129), rgb(145, 145, 145));
+    background-image: radial-gradient(rgb(96, 95, 95), red);
     border-radius: 10px;
     align-items: center;
     justify-items: center;
@@ -23,7 +24,7 @@
 
 h2 {
     color: white;
-    text-shadow: 3px -3px 0 #000, -3px 3px 0 #000;
+    text-shadow: 3px 3px 3px #3aff04;
 }
 
 #q1, #q2, #q3 {
