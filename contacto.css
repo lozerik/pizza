@@ -1,45 +1,63 @@
-.body{
-    
-    margin: auto;
-    display: flow-root;
+/* General */
+.body {
+    margin: 0;
+    min-height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
     url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Finfoempleonews.com%2Fwp-content%2Fuploads%2F2020%2F01%2Fcontacto.jpg&f=1&nofb=1&ipt=affa2438ca59e7757a317a2554fb30b0373796c2b56edd7eb0eb9bd89c27a27e') center/cover;
+    background-attachment: fixed;
 }
 
-img {
-    width: 300px;
-    margin: auto;
-    height: 300px;
-}
-
-.main {
-    align-items: center;
-    height: 100vh;
-    overflow-x:hidden;
-    overscroll-behavior:none;
-    margin: auto;
-      align-content: center;
-    
-}
-
-.contact-div {
-        margin: auto;
-    width: 80%;
-    height: 90%;
-    background-color: rgba(169, 169, 169, 0);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-p {
-    width: 50%;
-    
-    height: 50%;
-    background-color: rgba(128, 128, 128, 0);
-    align-content: center;
+/* Título */
+.h2 {
+    color: white; /* Cambiado a blanco para que resalte más */
     text-align: center;
-    border-radius: 100px;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+}
+
+/* Contenedor Principal (El truco está aquí) */
+.main {
+    display: flex;
+    flex-direction: column; /* Apila los elementos uno debajo de otro */
+    align-items: center;    /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente en el viewport */
+    min-height: 80vh;
+    padding: 20px;
+}
+
+/* Divs de cada contacto */
+.contact-div {
+    display: flex;
+    flex-direction: row;    /* Imagen al lado del texto */
+    align-items: center;    /* Alineación vertical interna */
+    justify-content: center; /* Centrado horizontal interno */
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;    /* Espacio entre cada red social */
+    background-color: rgba(255, 255, 255, 0.1); /* Ligero fondo para visibilidad */
+    border-radius: 15px;
+    padding: 10px 20px;
+    transition: transform 0.3s ease;
+}
+
+.contact-div:hover {
+    transform: scale(1.05); /* Efecto visual al pasar el ratón */
+}
+
+/* Imágenes/Logos */
+img {
+    width: 60px;  /* Tamaño más realista para iconos */
+    height: 60px;
+    margin-right: 20px; /* Separación del texto */
+    object-fit: contain;
+}
+
+/* Texto */
+p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
     color: rgb(255, 255, 255);
-    text-shadow:  3px 3px 3px rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
